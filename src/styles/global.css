@@ -1,0 +1,141 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 정의된 css를 필요할 때 클래스로 불러 사용하면 된다. */
+:root {
+  --font-family: "Pretendard-Regular", sans-serif;
+
+  --font-size-26: 26px;
+  --font-size-20: 20px;
+  --font-size-18: 18px;
+  --font-size-16: 16px;
+  --font-size-15: 15px;
+  --font-size-14: 14px;
+  --font-size-13: 13px;
+  --font-size-12: 12px;
+
+  --font-weight-bold: 700;
+  --font-weight-semi-bold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  --line-height-26: 26px;
+  --line-height-18: 18px;
+
+  --letter-spacing-5: 5%;
+  --letter-spacing-2: 2%;
+  --letter-spacing-17: -0.17px;
+
+  --primary-900: #02000e;
+  --primary-800: #181d26;
+  --primary-700: #67666e;
+  --primary-600: #828282;
+  --primary-500: #8c92ab;
+  --primary-400: #a3a5a8;
+  --primary-300: #f7f7f8;
+
+  --brand-200: #f96d69;
+  --brand-100: #fe5493;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+.bold-26 {
+  font-size: var(--font-size-26);
+  font-weight: var(--font-weight-bold);
+}
+
+.bold-20 {
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+}
+
+.bold-20-lh-26 {
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-26);
+}
+
+.semi-bold-18 {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.medium-18 {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+}
+
+.bold-16-lh-26-ls-5 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-26);
+  letter-spacing: var(--letter-spacing-5);
+}
+
+.medium-16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+}
+
+.regular-16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+}
+
+.regular-16-lh-18-ls-17 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-18);
+  letter-spacing: var(--letter-spacing-17);
+}
+
+.bold-15-lh-26 {
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-26);
+}
+
+.bold-14-lh-26 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-26);
+}
+
+.regular-14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+}
+
+.medium-13-lh-26-ls-2 {
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-26);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+.bold-13-lh-26-ls-2 {
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-26);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+.medium-12 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+}
+
+.medium-12-lh-18-ls-17 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-18);
+  letter-spacing: var(--letter-spacing-17);
+}

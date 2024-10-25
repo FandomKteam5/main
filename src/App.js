@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import ListPage from "./pages/ListPage";
+import MyPage from "./pages/MyPage";
+import Main from "./pages/Main";
+
+// 반응형의 경우 1920 / 744 / 375px 기준으로 작업
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // BrowserRouter를 사용하여 라우팅을 설정
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route index element={<LandingPage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/mypage" element={<MyPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
