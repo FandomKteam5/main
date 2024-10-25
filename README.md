@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Fandom-K
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[프로젝트 배지 (예: 빌드 상태)]  
+**프로젝트 설명:** "이 프로젝트는 팬들이 좋아하는 아이돌을 응원하고 투표할 수 있는 플랫폼입니다."
 
-## Available Scripts
+## 목차
 
-In the project directory, you can run:
+1. [프로젝트 소개](#프로젝트-소개)
+2. [주요 기능](#주요-기능)
+3. [기술 스택](#기술-스택)
+4. [설치 및 실행 방법](#설치-및-실행-방법)
+5. [폴더 구조](#폴더-구조)
+6. [기여 방법](#기여-방법)
+7. [팀 소개](#팀-소개)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 프로젝트 소개
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+이 프로젝트는 팬들이 좋아하는 아이돌을 지원하고, 투표하며, 인기 차트를 확인할 수 있는 팬덤 플랫폼입니다. 사용자는 아이돌 이미지를 보고, 후원 버튼을 누르거나 투표를 할 수 있습니다.
 
-### `npm test`
+## 주요 기능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **아이돌 이미지 표시:** 아이돌의 이미지 및 기본 정보 제공
+- **응원 및 투표 기능:** 팬들이 아이돌을 응원하거나 투표할 수 있음
+- **인기 차트 확인:** 현재 인기 아이돌 순위를 확인할 수 있는 차트 제공
+- **재사용 가능한 UI 컴포넌트**: 후원 및 투표 버튼, 인기 차트 등 공통 UI 요소를 컴포넌트화하여 재사용 가능
 
-### `npm run build`
+## 기술 스택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend**: React, CSS
+- **상태 관리**: 필요 시 추가 (예: Context API, Zustand)
+- **API**: 외부 API를 사용하여 아이돌 정보 및 차트 데이터를 가져옴
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 설치 및 실행 방법
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **레포지토리 클론**:
 
-### `npm run eject`
+   ```bash
+   git clone https://github.com/FandomKteam5/main
+   cd project-name
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **의존성 설치**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **개발 서버 실행**:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm start
+   ```
 
-## Learn More
+4. **서버 접속**: `http://localhost:3000`에서 애플리케이션 확인 가능
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 폴더 구조
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```plaintext
+project-name/
+├── public/
+├── src/
+│   ├── assets/          # 이미지, 아이콘 등의 정적 자원
+│   ├── components/      # 재사용 가능한 UI 컴포넌트
+│   ├── pages/           # 주요 페이지 컴포넌트
+│   ├── services/        # API 호출 관련 함수
+│   ├── styles/          # CSS 파일
+│   └── App.js           # 메인 애플리케이션 컴포넌트
+└── README.md
+```
 
-### Code Splitting
+## 팀 소개
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 팀 이름: **11기 5팀**
+- 팀원:
+  - **김태훈** (팀장)
+  - **김규연** (팀원)
+  - **박종찬** (팀원)
+  - **장수경** (팀원)
+  - **전명호** (팀원)
