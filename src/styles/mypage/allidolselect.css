@@ -1,0 +1,14 @@
+.allidolselect-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 아이돌 카드 8열 2행 */
+.allidolselect-card-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
