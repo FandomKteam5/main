@@ -1,0 +1,34 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 push될 때 트리거
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './build' # 빌드 결과물이 위치한 디렉토리
+          production-branch: main # Netlify에서 배포할 기본 브랜치
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy from GitHub Actions'
+          enable-pull-request-comment: false # PR 시 배포 알림 비활성화
+          enable-commit-comment: true # 커밋에 배포 알림 활성화
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
