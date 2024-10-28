@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true // jc
   },
   "extends": [
     "eslint:recommended",
@@ -16,6 +16,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "linebreak-style": "off"
+    "linebreak-style": "off" // jc
   }
 }
