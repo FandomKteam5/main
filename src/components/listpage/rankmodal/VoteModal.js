@@ -12,7 +12,7 @@ const VoteModal = () => {
 
   const handleVote = () => {
     if (!selectedIdol) {
-      alert('Please select an idol to vote for.');
+      alert('선택');
       return;
     }
     alert(`You voted for ${selectedIdol}!`);
