@@ -1,0 +1,12 @@
+.favoriteidol-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.favoriteidol-card-container {
+  display: flex;
+  flex-direction: row;
+}
