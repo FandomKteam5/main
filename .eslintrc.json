@@ -16,6 +16,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "linebreak-style": "off" // jc
+    "linebreak-style": "off",
+    "react/prop-types": "off"
   }
 }

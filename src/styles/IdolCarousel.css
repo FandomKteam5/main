@@ -1,0 +1,24 @@
+.idol-carousel-image-container {
+  position: relative;
+  width: 282px;
+  height: 293px;
+}
+
+.idol-carousel-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.idol-carousel-donate-button {
+  position: absolute;
+  bottom: 10px; /* Adjust the position as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
