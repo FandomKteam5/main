@@ -1,38 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import RankItem from './RankItem';
 import VoteButton from './VoteButton';
+import MockData from './MockData';
 
 const VoteModal = () => {
-  const [idols, setIdols] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState(null);
 
-  const handleSelect = (idolName) => {
-    setSelectedIdol(idolName);
+  const handleSelect = (id) => {
+    setSelectedIdol(id);
   };
 
   const handleVote = () => {
-    if (!selectedIdol) {
-      alert('선택');
-      return;
+    if (selectedIdol !== null) {
+      alert(`투표: ${seletedIdol}`);
+    } else {
+      alert('투표할 아이돌 선택해주세요.');
     }
-    alert(`You voted for ${selectedIdol}!`);
   };
 
   return (
     <div className="vote-modal">
       <h2>이달의 여자 아이돌</h2>
       <div className="rank-list">
-        {idols.map((idol, index) => (
+        {MockData.map((item, index) => (
           <RankItem
-            key={idol.name}
+            key={item.idol.id}
             rank={index + 1}
-            idol={idol}
-            isSelected={selectedIdol === idol.name}
+            idol={item.idol}
+            isSelected={selectedIdol === item.idol.id}
             onSelect={handleSelect}
           />
         ))}
       </div>
       <VoteButton onVote={handleVote} />
+      <p className="vote-credits">투표하는 데 1000 크레딧이 소모됩니다.</p>
     </div>
   );
 };

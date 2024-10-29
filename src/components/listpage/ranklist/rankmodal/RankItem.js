@@ -2,15 +2,21 @@ import React from 'react';
 
 const RankItem = ({ rank, idol, isSelected, onSelect }) => {
   return (
-    <div className="rank-item" onClick={() => onSelect(idol.name)}>
-      <img src={idol.image} alt={`${idol.name} profile`} />
+    <div className="rank-item" onClick={() => onSelect(idol.id)}>
+      <div className="rank-number">{rank}</div>
+      <img src={idol.image} alt={`${idol.id} profile`} />
       <div className="rank-details">
-        <p>
-          {rank}. {idol.name}
+        <p className="idol-name">
+          {idol.group} {idol.name}
         </p>
-        <p>{idol.votes} 표</p>
+        <p>{idol.totalVotes.toLocaleString()} 표</p>
       </div>
-      <input type="radio" checked={isSelected} onChange={() => {}} />
+      <input
+        className="radio-btn"
+        type="radio"
+        checked={isSelected}
+        onChange={() => onSelect(idol.id)}
+      />
     </div>
   );
 };
