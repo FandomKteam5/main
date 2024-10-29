@@ -1,57 +1,72 @@
+import { useEffect, useState } from 'react';
 import '../../styles/mypage/allidolselect.css';
 import IdolCard from './IdolCard';
 
-const mockCards = [
-  {
-    id: 1,
-    name: '아이유',
-    image:
-      'https://cdn.pixabay.com/photo/2016/11/22/23/44/buildings-1851246_960_720.jpg',
-    groupName: 'IU',
-  },
-  {
-    id: 2,
-    name: '아이린',
-    image:
-      'https://cdn.pixabay.com/photo/2016/11/22/23/44/buildings-1851246_960_720.jpg',
-    groupName: '레드벨벳',
-  },
-  {
-    id: 3,
-    name: '수지',
-    image:
-      'https://cdn.pixabay.com/photo/2016/11/22/23/44/buildings-1851246_960_720.jpg',
-    groupName: '미쓰에이',
-  },
-  {
-    id: 4,
-    name: '유리',
-    image:
-      'https://cdn.pixabay.com/photo/2016/11/22/23/44/buildings-1851246_960_720.jpg',
-    groupName: '소녀시대',
-  },
-];
+const AllIdolSelect = ({
+  cursor,
+  loadingError,
+  idolList = [],
+  handleLoadMore,
+  addFavoriteIdolTemp,
+}) => {
+  const [allIdols, setAllIdols] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
 
-const AllIdolSelect = () => {
+  useEffect(() => {
+    setAllIdols(idolList);
+  }, [idolList]);
+
+  const onLoadMore = () => {
+    if (idolList.length > 0) {
+      handleLoadMore();
+    }
+  };
+
+  // 클릭한 아이돌을 임시 관심 아이돌 목록에 추가
+  const onClick = (id) => {
+    addFavoriteIdolTemp(id);
+    setSelectedIds((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((selectedId) => selectedId !== id); // 선택된 아이돌 제거
+      } else {
+        return [...prev, id]; // 선택된 아이돌 추가
+      }
+    });
+    console.log(id);
+  };
+
   return (
     <div className="allidolselect-container">
       <div>
-        <button>왼쪽</button>
+        <button className="allidolselect-btn">왼쪽</button>
       </div>
       <div className="allidolselect-card-container">
-        {mockCards.map((card) => {
-          return (
-            <IdolCard
-              key={card.id}
-              name={card.name}
-              image={card.image}
-              groupName={card.groupName}
-            />
-          );
-        })}
+        {loadingError ? (
+          <div className="allidolselect-error-message">{loadingError}</div>
+        ) : (
+          <>
+            {allIdols.map((card) => (
+              <IdolCard
+                onClick={onClick}
+                key={card.id}
+                id={card.id}
+                name={card.name}
+                image={card.image}
+                groupName={card.groupName}
+                isSelected={selectedIds.includes(card.id)}
+              />
+            ))}
+          </>
+        )}
       </div>
       <div>
-        <button>오른쪽</button>
+        <button
+          className="allidolselect-btn"
+          disabled={cursor === 0}
+          onClick={onLoadMore}
+        >
+          오른쪽
+        </button>
       </div>
     </div>
   );
