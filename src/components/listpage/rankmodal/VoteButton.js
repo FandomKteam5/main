@@ -1,5 +1,3 @@
-import React from 'react';
-
 const VoteButton = ({ onVote }) => {
   return (
     <button className="vote-btn" onClick={onVote}>

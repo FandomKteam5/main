@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import RankItem from './RankItem';
 import VoteButton from './VoteButton';
 
 const VoteModal = () => {
   const [idols, setIdols] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState(null);
+
+  useEffect(() => {
+    setIdols([]);
+  }, []);
 
   const handleSelect = (idolName) => {
     setSelectedIdol(idolName);

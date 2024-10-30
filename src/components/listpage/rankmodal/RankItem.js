@@ -1,5 +1,3 @@
-import React from 'react';
-
 const RankItem = ({ rank, idol, isSelected, onSelect }) => {
   return (
     <div className="rank-item" onClick={() => onSelect(idol.name)}>
