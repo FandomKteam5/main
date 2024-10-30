@@ -17,7 +17,6 @@ const IdolCard = ({
       <img src={image} alt={name} style={{ width: '100px', height: '100px' }} />
       <p>{name}</p>
       <p>{groupName}</p>
-      <p>idol</p>
     </div>
   );
 };
