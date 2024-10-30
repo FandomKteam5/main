@@ -18,7 +18,7 @@ const MyPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
 
-  const [tempfavoriteList, setTempFavoriteList] = useState([]);
+  const [tempFavoriteList, setTempFavoriteList] = useState([]);
 
   // 반응형 웹을 위한 창 크기에 따른 페이지 사이즈 변경
   const handleResize = () => {
@@ -49,16 +49,15 @@ const MyPage = () => {
   const getFavoriteIdols = () => {
     const favoriteList = localStorage.getItem('favoriteList');
     if (favoriteList) {
+      console.log(favoriteList);
       setFavoriteList(JSON.parse(favoriteList)); // 문자열 객체로 변환
     }
   };
 
   // 관심있는 아이돌 목록에서 삭제
   const removeFavoriteIdol = (id) => {
-    const newFavoriteList = favoriteList.filter(
-      (favoriteIdol) => favoriteIdol.id !== id
-    );
-    localStorage.setItem('favoriteList', JSON.stringify(newFavoriteList)); // 문자열로 변환
+    const newFavoriteList = favoriteList.filter((item) => item.id !== id);
+    localStorage.setItem('favoriteList', JSON.stringify(newFavoriteList));
     setFavoriteList(newFavoriteList);
   };
 
@@ -96,12 +95,12 @@ const MyPage = () => {
   // 추가할 아이돌 임시 목록 저장
   const addFavoriteIdolTemp = (id) => {
     const idol = idolList.find((item) => item.id === id);
-    setTempFavoriteList([...tempfavoriteList, idol]);
+    setTempFavoriteList((prevList) => [...prevList, idol]);
   };
 
   // 추가하기 버튼 클릭 시 관심있는 아이돌 목록에 추가
   const addFavoriteIdol = () => {
-    const newFavoriteList = [...favoriteList, ...tempfavoriteList];
+    const newFavoriteList = [...favoriteList, ...tempFavoriteList];
     localStorage.setItem('favoriteList', JSON.stringify(newFavoriteList)); // 문자열로 변환
     setFavoriteList(newFavoriteList);
     setTempFavoriteList([]);
@@ -116,14 +115,14 @@ const MyPage = () => {
   // 컴포넌트가 처음 렌더링될 때 아이돌 목록 가져오기
   useEffect(() => {
     handleLoadIdols({ cursor: 0, pageSize });
-  }, [pageSize]);
+    getFavoriteIdols();
+  }, []);
 
   return (
     <Container>
       <div className="mypage-container">
         <FavoriteIdol
           favoriteList={favoriteList}
-          getFavoriteIdols={getFavoriteIdols}
           removeFavoriteIdol={removeFavoriteIdol}
         />
         <AllIdol
@@ -137,6 +136,7 @@ const MyPage = () => {
           handlePageSizeChange={handlePageSizeChange}
           addFavoriteIdolTemp={addFavoriteIdolTemp}
           addFavoriteIdol={addFavoriteIdol}
+          favoriteList={favoriteList}
         />
       </div>
     </Container>

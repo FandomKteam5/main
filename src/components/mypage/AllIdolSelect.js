@@ -8,6 +8,7 @@ const AllIdolSelect = ({
   idolList = [],
   handleLoadMore,
   addFavoriteIdolTemp,
+  favoriteList,
 }) => {
   const [allIdols, setAllIdols] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
@@ -24,6 +25,9 @@ const AllIdolSelect = ({
 
   // 클릭한 아이돌을 임시 관심 아이돌 목록에 추가
   const onClick = (id) => {
+    if (favoriteList.some((item) => item.id === id)) {
+      return;
+    }
     addFavoriteIdolTemp(id);
     setSelectedIds((prev) => {
       if (prev.includes(id)) {
@@ -32,8 +36,9 @@ const AllIdolSelect = ({
         return [...prev, id]; // 선택된 아이돌 추가
       }
     });
-    console.log(id);
   };
+
+  // 관심있는 아이돌 리스트에 있을 경우 선택 불가능하게 하기
 
   return (
     <div className="allidolselect-container">
@@ -54,6 +59,7 @@ const AllIdolSelect = ({
                 image={card.image}
                 groupName={card.groupName}
                 isSelected={selectedIds.includes(card.id)}
+                isFavorite={favoriteList.some((item) => item.id === card.id)}
               />
             ))}
           </>
