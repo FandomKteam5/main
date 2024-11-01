@@ -1,10 +1,12 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { getCharts } from '../../../services/RankApi';
 import IdolChart from './IdolChart';
 import { ReactComponent as Chart } from '../../../assets/icons/chart.svg';
 import ChartModal from './ChartModal';
+// import MoreButton from "./MoreButton"; //
 import '../../../styles/listpage/ChartOfMonth.css';
 
+// 모달 open, close를 위한 state
 const useModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -12,6 +14,7 @@ const useModal = () => {
   return [open, handleOpen, handleClose];
 };
 
+// 데이터 로딩
 const useLoad = (getData) => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
@@ -42,27 +45,29 @@ const ChartOfMonth = () => {
   const [hasMore, setHasMore] = useState(true);
 
   // 성별과 페이지에 따른 데이터 가져오기
-  const fetchIdols = useCallback(async () => {
+  const fetchIdols = async () => {
     const chart = await handleLoad({ gender: currentTab, page, limit: 10 });
     if (chart && chart.results) {
       setIdolList((prevList) => [...prevList, ...chart.results]);
       setHasMore(chart.next !== null);
     }
-  }, [currentTab, page, handleLoad]);
+  };
 
   // 성별 전환 시 리스트 리셋 및 새로운 데이터 가져오기
   useEffect(() => {
     setIdolList([]);
     setPage(1); // 첫 페이지로 페이지 리셋
     fetchIdols();
-  }, [currentTab, fetchIdols]);
+    console.log(1);
+  }, [currentTab]);
 
-  // 페이지 전환시 아이돌 가져오기
+  // 페이지 전환 시 아이돌 가져오기
   useEffect(() => {
     if (page > 1) {
       fetchIdols();
+      console.log(2);
     }
-  }, [page, fetchIdols]);
+  }, [page]);
 
   // 성별로 탭 전환
   const handleTabChange = (tab) => {
@@ -114,6 +119,7 @@ const ChartOfMonth = () => {
           더 보기
         </button>
       )}
+      {/* <MoreButton onClick={loadMore} isLoading={isLoading} hasMore={hasMore} /> */}
       {isOpen && (
         <ChartModal
           isOpen={isOpen}
