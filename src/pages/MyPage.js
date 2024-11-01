@@ -49,7 +49,6 @@ const MyPage = () => {
   const getFavoriteIdols = () => {
     const favoriteList = localStorage.getItem('favoriteList');
     if (favoriteList) {
-      console.log(favoriteList);
       setFavoriteList(JSON.parse(favoriteList)); // 문자열 객체로 변환
     }
   };
@@ -94,8 +93,20 @@ const MyPage = () => {
 
   // 추가할 아이돌 임시 목록 저장
   const addFavoriteIdolTemp = (id) => {
-    const idol = idolList.find((item) => item.id === id);
-    setTempFavoriteList((prevList) => [...prevList, idol]);
+    // 관심있는 아이돌 리스트에 있을 경우 선택 불가능하게 하기
+    if (favoriteList.some((item) => item.id === id)) {
+      return;
+    }
+    // 임시 관심 아이돌 리스트에 있을 경우 임시 관심 아이돌 리스트에서 삭제
+    if (tempFavoriteList.some((item) => item.id === id)) {
+      setTempFavoriteList((prevList) =>
+        prevList.filter((item) => item.id !== id)
+      );
+    } else {
+      // 임시 관심 아이돌 리스트에 없을 경우 추가
+      const idol = idolList.find((item) => item.id === id);
+      setTempFavoriteList((prevList) => [...prevList, idol]);
+    }
   };
 
   // 추가하기 버튼 클릭 시 관심있는 아이돌 목록에 추가
@@ -137,6 +148,7 @@ const MyPage = () => {
           addFavoriteIdolTemp={addFavoriteIdolTemp}
           addFavoriteIdol={addFavoriteIdol}
           favoriteList={favoriteList}
+          tempFavoriteList={tempFavoriteList}
         />
       </div>
     </Container>
