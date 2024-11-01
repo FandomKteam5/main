@@ -1,14 +1,23 @@
-import '../../../styles/listpage/IdolChart.css';
+import RankItem from './RankItem';
 
-const IdolChart = ({ rank, idol }) => (
-  <div className="idol-card">
-    <div className="idol-rank">{rank}</div>
-    <img src={idol.imageUrl} alt={idol.name} className="idol-image" />
-    <div className="idol-info">
-      <div className="idol-name">{idol.name}</div>
-      <div className="idol-votes">{idol.votes}표</div>
-    </div>
-  </div>
-);
+const IdolChart = ({ isLoading, loadingError, idolList }) => {
+  const chartClass = `chart ${idolList.length % 2 === 0 ? 'even' : ''}`;
+
+  if (loadingError) {
+    return <div className="error-message">Error: {loadingError}</div>;
+  }
+
+  if (idolList.length === 0 && isLoading) {
+    return <div className="loading-spinner">Loading...</div>;
+  }
+
+  return (
+    <ul className={chartClass}>
+      {idolList.map((idol, index) => (
+        <RankItem key={idol.id} idol={idol} ranking={index + 1} />
+      ))}
+    </ul>
+  );
+};
 
 export default IdolChart;
