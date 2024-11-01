@@ -3,7 +3,7 @@ import logo from '../assets/images/Fandom-K.svg';
 import home1 from '../assets/images/Home-1.png';
 import home2 from '../assets/images/Home-2.png';
 import home3 from '../assets/images/Home-3.png';
-import '../styles/landingPage.css';
+import '../styles/LandingPage.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();

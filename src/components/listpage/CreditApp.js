@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/images/Fandom-K.svg';
-import profile from '../../assets/images/jelly.jpg';
 import creditLogo from '../../assets/images/Group 33588.png';
 import '../../styles/CreditApp.css';
 
@@ -9,7 +6,6 @@ function CreditApp() {
   const [credit, setCredit] = useState(0); // 크레딧 상태
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달창 열림 여부
   const [chargeAmount, setChargeAmount] = useState(0); // 충전할 금액
-  const navigate = useNavigate();
 
   // 컴포넌트가 처음 렌더링될 때 localStorage에서 크레딧을 불러옴
   useEffect(() => {
@@ -21,11 +17,6 @@ function CreditApp() {
   useEffect(() => {
     localStorage.setItem('credit', credit);
   }, [credit]);
-
-  // 로고 버튼 클릭 시 새로고침
-  const handleLogoClick = () => {
-    window.location.reload();
-  };
 
   // 충전하기 버튼 클릭 시 모달 열기
   const handleChargeClick = () => {
@@ -44,28 +35,8 @@ function CreditApp() {
     setChargeAmount(0);
   };
 
-  // 프로필 이미지 클릭 시 /mypage로 이동
-  const handleProfileClick = () => {
-    navigate('/mypage');
-  };
-
   return (
     <div>
-      <header className="creditApp__header--section">
-        <img
-          className="listPage__header--logo"
-          src={logo}
-          alt="logo"
-          onClick={handleLogoClick}
-        />
-        <img
-          src={profile}
-          className="header__section--profile"
-          onClick={handleProfileClick}
-          alt="프로필"
-        />
-      </header>
-
       <div className="main__section--credit">
         <div>
           <div>내 크레딧</div>
