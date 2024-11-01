@@ -11,6 +11,7 @@ const AllIdol = ({
   addFavoriteIdolTemp,
   addFavoriteIdol,
   favoriteList,
+  tempFavoriteList,
 }) => {
   if (getListError) {
     return (
@@ -39,6 +40,7 @@ const AllIdol = ({
             handleLoadMore={handleLoadMore}
             addFavoriteIdolTemp={addFavoriteIdolTemp}
             favoriteList={favoriteList}
+            tempFavoriteList={tempFavoriteList}
           />
         )}
       </div>

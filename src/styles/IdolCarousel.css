@@ -12,13 +12,36 @@
 }
 
 .idol-carousel-donate-button {
-  position: absolute;
-  bottom: 10px; /* Adjust the position as needed */
+  background-color: #fe5493;
+  width: 234px;
+  height: 40px;
+  border-radius: 3px;
   left: 50%;
+  position: absolute;
   transform: translateX(-50%);
   color: white;
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/**/
+
+.idol-carousel-donate-modal {
+  position: fixed;
+  width: 386px;
+  height: 797px;
+  background-color: black;
+}
+
+.idol-carousel-donate-modal-content {
+  position: relative;
+  width: 295px;
+  height: 453px;
+  gap: 24px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
 }

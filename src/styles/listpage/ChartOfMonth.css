@@ -1,0 +1,66 @@
+.chart-container {
+  color: white;
+  /* background-color: #181818; */
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  width: 600px;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  transition:
+    color 0.3s,
+    border-bottom 0.3s;
+}
+
+.tabs .active-tab {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 12px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.idol-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.load-more-button {
+  background-color: #251f20;
+  border: 1px;
+  border-color: #f1eef9cc;
+  padding: 8px 143px;
+  color: white;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.load-more-button:hover {
+  background-color: #ff5068;
+}

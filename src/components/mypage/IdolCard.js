@@ -8,15 +8,22 @@ const IdolCard = ({
   onClick,
   isSelected,
   isFavorite,
+  size,
 }) => {
   return (
     <div
-      className={`idolcard-container ${isSelected ? 'selected' : ''} ${isFavorite ? 'disabled' : ''}`}
+      className={`idolcard-container ${isSelected ? 'selected' : ''} ${isFavorite ? 'disabled' : ''} ${size}`}
       onClick={() => onClick(id)}
     >
-      <img src={image} alt={name} style={{ width: '100px', height: '100px' }} />
-      <p>{name}</p>
-      <p>{groupName}</p>
+      <div className="idolcard-image-overlay">
+        <img src={image} alt={name} />
+      </div>
+      <div className="idolcard-name-overlay">
+        <p>{name}</p>
+      </div>
+      <div className="idolcard-group-overlay">
+        <p>{groupName}</p>
+      </div>
     </div>
   );
 };

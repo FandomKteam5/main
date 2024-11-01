@@ -1,0 +1,127 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1b1b1b;
+  color: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-body {
+  margin-top: 10px;
+}
+
+.idol-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.idol-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.idol-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.idol-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.idol-info {
+  flex-grow: 1;
+}
+
+.idol-rank {
+  font-weight: bold;
+  color: #ff5e57;
+}
+
+.idol-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.idol-name {
+  color: #fff;
+}
+
+.idol-votes {
+  color: #aaa;
+}
+
+.idol-radio {
+  width: 20px;
+  height: 20px;
+}
+
+.vote-button {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #ff5e57, #ff8a65);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.vote-button:hover {
+  background: linear-gradient(90deg, #ff4d4d, #ff7a59);
+}
+
+.credit-info {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.credit-cost {
+  color: #ff5e57;
+  font-weight: bold;
+}
