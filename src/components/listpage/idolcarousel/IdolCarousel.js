@@ -1,4 +1,4 @@
-import fandomKImg6 from '../src/assets/images/fandomK-img6.png';
+import fandomKImg6 from '../src/assets/images/fandomK-img7.png';
 import fandomKImg7 from '../src/assets/images/fandomK-img7.png';
 import fandomKImg8 from '../src/assets/images/fandomK-img8.png';
 import fandomKImg1 from '../src/assets/images/fandomK-img (1).png';
