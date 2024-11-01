@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import '../../styles/mypage/allidolselect.css';
+
+import useWindowSize from '../hooks/useWindowSize';
 import IdolCard from './IdolCard';
 
-import { ReactComponent as LeftBtn } from '../../assets/icons/btn_pagination_arrow_left.svg';
-import { ReactComponent as RightBtn } from '../../assets/icons/btn_pagination_arrow_right.svg';
-
-const AllIdolSelect = ({
+const AllIdolSelectMobile = ({
   cursor,
   loadingError,
   idolList = [],
@@ -16,15 +14,28 @@ const AllIdolSelect = ({
   onClickAdd,
 }) => {
   const [allIdols, setAllIdols] = useState([]);
-  // const [selectedIds, setSelectedIds] = useState([]);
 
+  const windowSize = useWindowSize();
+
+  // 아이돌 목록 가져오기
   useEffect(() => {
     setAllIdols(idolList);
   }, [idolList]);
 
+  // 아이돌 목록 더 가져오기
   const onLoadMore = () => {
     if (idolList.length > 0) {
       handleLoadMore();
+    }
+  };
+
+  // 스크롤이 끝에 도달하면 아이돌 목록 더 가져오기
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      onLoadMore();
     }
   };
 
@@ -34,13 +45,13 @@ const AllIdolSelect = ({
   };
 
   return (
-    <div className="allidolselect-container">
-      <div className="allidolselect-btn">
-        <LeftBtn />
-      </div>
-      <div className="allidolselect-card-container">
+    <div>
+      {/* 아이돌 리스트 3행 3열 */}
+      {/* 추가하기 버튼 영역(투명하지만 어두운 배경, 아래에 있는 아이돌 리스트는
+        흐릿하게 보이도록) */}
+      <div>
         {loadingError ? (
-          <div className="allidolselect-error-message">{loadingError}</div>
+          <div>{loadingError}</div>
         ) : (
           <>
             {allIdols.map((card) => (
@@ -62,19 +73,10 @@ const AllIdolSelect = ({
         )}
       </div>
       <div>
-        <button
-          className="allidolselect-btn"
-          disabled={cursor === 0}
-          onClick={onLoadMore}
-        >
-          <RightBtn />
-        </button>
-      </div>
-      <div className="allidol-addBtn-container">
         <button onClick={onClickAdd}>추가하기</button>
       </div>
     </div>
   );
 };
 
-export default AllIdolSelect;
+export default AllIdolSelectMobile;

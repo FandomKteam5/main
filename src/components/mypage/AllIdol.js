@@ -41,11 +41,9 @@ const AllIdol = ({
             addFavoriteIdolTemp={addFavoriteIdolTemp}
             favoriteList={favoriteList}
             tempFavoriteList={tempFavoriteList}
+            onClickAdd={onClickAdd}
           />
         )}
-      </div>
-      <div className="allidol-addBtn-container">
-        <button onClick={onClickAdd}>추가하기</button>
       </div>
     </div>
   );
