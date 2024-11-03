@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import '../../styles/mypage/allidolselectmobile.css';
+
 import useWindowSize from '../hooks/useWindowSize';
 import IdolCard from './IdolCard';
 
@@ -16,10 +18,20 @@ const AllIdolSelectMobile = ({
   const [allIdols, setAllIdols] = useState([]);
 
   const windowSize = useWindowSize();
+  console.log(windowSize);
+  console.log(cursor);
 
   // 아이돌 목록 가져오기
   useEffect(() => {
     setAllIdols(idolList);
+  }, [idolList]);
+
+  // 스크롤 이벤트 핸들러 등록
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [idolList]);
 
   // 아이돌 목록 더 가져오기
@@ -45,11 +57,8 @@ const AllIdolSelectMobile = ({
   };
 
   return (
-    <div>
-      {/* 아이돌 리스트 3행 3열 */}
-      {/* 추가하기 버튼 영역(투명하지만 어두운 배경, 아래에 있는 아이돌 리스트는
-        흐릿하게 보이도록) */}
-      <div>
+    <div className="allidolselectmobile-container">
+      <div className="allidolselectmobile-grid">
         {loadingError ? (
           <div>{loadingError}</div>
         ) : (
@@ -72,8 +81,10 @@ const AllIdolSelectMobile = ({
           </>
         )}
       </div>
-      <div>
-        <button onClick={onClickAdd}>추가하기</button>
+      <div className="allidolselectmobile-addbtn-overlay">
+        <button className="allidolselectmobile-addbtn" onClick={onClickAdd}>
+          추가하기
+        </button>
       </div>
     </div>
   );

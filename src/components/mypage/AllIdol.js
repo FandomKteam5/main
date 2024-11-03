@@ -1,7 +1,9 @@
 import '../../styles/mypage/allidol.css';
 import AllIdolSelect from './AllIdolSelect';
+import AllIdolSelectMobile from './AllIdolSelectMobile';
 
 const AllIdol = ({
+  cursor,
   loadingError,
   getListError,
   handleGetListError,
@@ -12,6 +14,7 @@ const AllIdol = ({
   addFavoriteIdol,
   favoriteList,
   tempFavoriteList,
+  isMobile,
 }) => {
   if (getListError) {
     return (
@@ -33,6 +36,17 @@ const AllIdol = ({
       <div className="allidol-card-container">
         {isLoading ? (
           <p>아이돌 목록을 가져오는 중입니다...</p>
+        ) : isMobile ? (
+          <AllIdolSelectMobile
+            cursor={cursor}
+            loadingError={loadingError}
+            idolList={idolList}
+            handleLoadMore={handleLoadMore}
+            addFavoriteIdolTemp={addFavoriteIdolTemp}
+            favoriteList={favoriteList}
+            tempFavoriteList={tempFavoriteList}
+            onClickAdd={onClickAdd}
+          />
         ) : (
           <AllIdolSelect
             loadingError={loadingError}

@@ -5,6 +5,8 @@ import IdolCard from './IdolCard';
 import { ReactComponent as LeftBtn } from '../../assets/icons/btn_pagination_arrow_left.svg';
 import { ReactComponent as RightBtn } from '../../assets/icons/btn_pagination_arrow_right.svg';
 
+import addBtn from '../../assets/icons/Ic_plus_24px.png';
+
 const AllIdolSelect = ({
   cursor,
   loadingError,
@@ -61,17 +63,14 @@ const AllIdolSelect = ({
           </>
         )}
       </div>
-      <div>
-        <button
-          className="allidolselect-btn"
-          disabled={cursor === 0}
-          onClick={onLoadMore}
-        >
-          <RightBtn />
-        </button>
+      <div className="allidolselect-btn">
+        <RightBtn disabled={cursor === 0} onClick={onLoadMore} />
       </div>
-      <div className="allidol-addBtn-container">
-        <button onClick={onClickAdd}>추가하기</button>
+      <div className="allidolselect-addbtn-container">
+        <button className="allidolselect-addbtn" onClick={onClickAdd}>
+          <img src={addBtn} alt="add" />
+          추가하기
+        </button>
       </div>
     </div>
   );
