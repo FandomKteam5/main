@@ -10,14 +10,42 @@
   font-family: Arial, sans-serif;
 }
 
-h1 {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
   font-size: 24px;
+  text-align: left;
   margin-bottom: 20px;
+}
+
+.chart-vote-button {
+  display: flex;
+  align-items: center;
+  width: 128px;
+  height: 32px;
+  background: linear-gradient(90deg, #f86f65, #fe5493);
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.chart-icon {
+  margin-right: 8px;
+  width: 18px;
+  height: 16px;
 }
 
 .tabs {
   display: flex;
   justify-content: center;
+  margin-top: 24px;
   margin-bottom: 20px;
 }
 

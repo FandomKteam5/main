@@ -1,6 +1,6 @@
-import './PopupModal.css';
-import CreditIcon from '../../../../assets/icons/credit.svg';
-import CloseIcon from '../../../../assets/icons/close.svg';
+// import './PopupModal.css';
+import { ReactComponent as CreditIcon } from '../../../assets/icons/credit.svg';
+import { ReactComponent as CloseIcon } from '../../../assets/icons/close.svg';
 
 function LackModal({ onClose }) {
   return (
