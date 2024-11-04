@@ -1,16 +1,14 @@
 import RankItem from './RankItem';
 
-const IdolChart = ({ idols }) => {
+const IdolChart = ({ idolList }) => {
   // const sortedVoteIdols = [...idols].sort(
   //   (a, b) => b.totalVotes - a.totalVotes
   // );
 
   return (
     <ul className="idolListUl">
-      {idols &&
-        idols.map((idols, index) => (
-          <RankItem key={idols.id} rank={index + 1} idols={idols} />
-        ))}
+      {idolList &&
+        idolList.map((idols) => <RankItem key={idols.id} idol={idols} />)}
     </ul>
   );
 };

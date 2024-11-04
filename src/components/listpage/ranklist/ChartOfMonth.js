@@ -50,7 +50,8 @@ const ChartOfMonth = () => {
     const fetchAndLogCharts = async () => {
       try {
         const data = await getCharts({ gender: 'female', page: 1, limit: 10 }); // 기본 매개변수 전달
-        console.log('데이터 가져오기:', data); // 데이터를 콘솔에 출력
+        setIdolList(data.idols); // 아이돌 목록을 상태에 저장
+        console.log('차트 데이터 가져오기:', data); // 데이터를 콘솔에 출력
       } catch (error) {
         console.error('에러 발생', error); // 에러가 발생할 경우 콘솔에 출력
       }
@@ -65,7 +66,7 @@ const ChartOfMonth = () => {
     const fetchAndLoadIdols = async () => {
       try {
         const data = await getIdolList({ pageSize: 10, keyword: '' }); // 예시로 여성 아이돌 데이터를 가져옴
-        console.log('데이터 가져오기:', data);
+        console.log('아이돌 데이터 가져오기:', data);
       } catch (error) {
         console.error('에러 발생', error);
       }
@@ -179,9 +180,7 @@ const ChartOfMonth = () => {
         ) : loadingError ? (
           <p className="error-message">에러 발생: {loadingError.message}</p>
         ) : (
-          idolList.map((idols, index) => (
-            <IdolChart key={idols.id} rank={index + 1} idol={idols} />
-          ))
+          <IdolChart idolList={idolList} />
         )}
       </div>
       {hasMore && (
