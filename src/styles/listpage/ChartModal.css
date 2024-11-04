@@ -100,7 +100,7 @@
 .vote-button {
   width: 100%;
   padding: 10px;
-  background: linear-gradient(90deg, #ff5e57, #ff8a65);
+  background: linear-gradient(90deg, #f86f65, #fe5493);
   border: none;
   color: white;
   border-radius: 5px;
@@ -111,7 +111,7 @@
 }
 
 .vote-button:hover {
-  background: linear-gradient(90deg, #ff4d4d, #ff7a59);
+  background: linear-gradient(90deg, #f86f65, #fe5493);
 }
 
 .credit-info {

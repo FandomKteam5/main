@@ -1,21 +1,16 @@
 import RankItem from './RankItem';
 
-const IdolChart = ({ isLoading, loadingError, idolList }) => {
-  const chartClass = `chart ${idolList.length % 2 === 0 ? 'even' : ''}`;
-
-  if (loadingError) {
-    return <div className="error-message">Error: {loadingError}</div>;
-  }
-
-  if (idolList.length === 0 && isLoading) {
-    return <div className="loading-spinner">Loading...</div>;
-  }
+const IdolChart = ({ idols }) => {
+  // const sortedVoteIdols = [...idols].sort(
+  //   (a, b) => b.totalVotes - a.totalVotes
+  // );
 
   return (
-    <ul className={chartClass}>
-      {idolList.map((idol, index) => (
-        <RankItem key={idol.id} idol={idol} ranking={index + 1} />
-      ))}
+    <ul className="idolListUl">
+      {idols &&
+        idols.map((idols, index) => (
+          <RankItem key={idols.id} rank={index + 1} idols={idols} />
+        ))}
     </ul>
   );
 };

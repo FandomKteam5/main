@@ -42,17 +42,16 @@
 
 // export default MoreButton;
 
-const MoreButton = ({ isLoading, loadingError, handleMoreBtn, nextCursor }) => {
-  // Determine if the button should be disabled
-  const isDisabled = isLoading || !nextCursor || loadingError;
+// const MoreButton = ({ isLoading, loadingError, handleMoreBtn, nextCursor }) => {
+//   const isDisabled = isLoading || !nextCursor || loadingError;
 
-  return (
-    <div className="more-button">
-      <button onClick={handleMoreBtn} disabled={isDisabled}>
-        {isLoading ? 'Loading...' : '더 보기'}
-      </button>
-    </div>
-  );
-};
+//   return (
+//     <div className="more-button">
+//       <button onClick={handleMoreBtn} disabled={isDisabled}>
+//         {isLoading ? 'Loading...' : '더 보기'}
+//       </button>
+//     </div>
+//   );
+// };
 
-export default MoreButton;
+// export default MoreButton;
