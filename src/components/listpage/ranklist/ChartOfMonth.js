@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCharts, getIdolList } from '../../../services/RankApi';
+import { getCharts } from '../../../services/RankApi';
 import IdolChart from './IdolChart';
 import { ReactComponent as Chart } from '../../../assets/icons/chart.svg';
 import ChartModal from './ChartModal';
@@ -43,37 +43,6 @@ const ChartOfMonth = () => {
   const [currentTab, setCurrentTab] = useState('female'); // 현재 탭의 성별
   const [page, setPage] = useState(1); // 현재 페이지
   const [hasMore, setHasMore] = useState(true); // 더보기
-
-  // 콘솔로 fetch 확인
-  useEffect(() => {
-    // getCharts 데이터를 가져와 콘솔에 출력하는 함수
-    const fetchAndLogCharts = async () => {
-      try {
-        const data = await getCharts({ gender: 'female', page: 1, limit: 10 }); // 기본 매개변수 전달
-        setIdolList(data.idols); // 아이돌 목록을 상태에 저장
-        console.log('차트 데이터 가져오기:', data); // 데이터를 콘솔에 출력
-      } catch (error) {
-        console.error('에러 발생', error); // 에러가 발생할 경우 콘솔에 출력
-      }
-    };
-
-    fetchAndLogCharts(); // 컴포넌트가 마운트될 때 호출
-  }, []);
-
-  // 콘솔로 fetch 확인
-  useEffect(() => {
-    // 아이돌 데이터를 가져와 콘솔에 출력하는 함수
-    const fetchAndLoadIdols = async () => {
-      try {
-        const data = await getIdolList({ pageSize: 10, keyword: '' }); // 예시로 여성 아이돌 데이터를 가져옴
-        console.log('아이돌 데이터 가져오기:', data);
-      } catch (error) {
-        console.error('에러 발생', error);
-      }
-    };
-
-    fetchAndLoadIdols(); // 컴포넌트가 마운트될 때 호출
-  }, []);
 
   // 성별과 페이지에 따른 데이터 가져오기
   // const fetchIdols = async () => {
@@ -151,6 +120,8 @@ const ChartOfMonth = () => {
     }
   };
 
+  // TODO: 투표 요청 성공 후 리스트 재요청(refetch) 필요
+
   return (
     <div className="chart-container">
       <div className="header">
@@ -194,7 +165,7 @@ const ChartOfMonth = () => {
           isOpen={isOpen}
           closeModal={closeModal}
           currentTab={currentTab}
-          setIsVote={() => {}}
+          // setIsVote={() => {}}
         />
       )}
     </div>

@@ -50,7 +50,7 @@ export async function postVotes(id) {
   const voteURL = `${apiUrl}/votes`;
 
   try {
-    const response = await fetch(voteURL, {
+    await fetch(voteURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,9 +59,6 @@ export async function postVotes(id) {
         idolId: id,
       }),
     });
-    if (!response.ok) {
-      throw new Error('투표 실패');
-    }
   } catch (error) {
     console.error('투표 중 오류 발생:', error);
     throw error;

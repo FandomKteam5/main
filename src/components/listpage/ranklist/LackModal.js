@@ -1,4 +1,4 @@
-// import './PopupModal.css';
+import '../../../styles/listpage/LackModal.css';
 import { ReactComponent as CreditIcon } from '../../../assets/icons/credit.svg';
 import { ReactComponent as CloseIcon } from '../../../assets/icons/close.svg';
 
