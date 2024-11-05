@@ -1,4 +1,4 @@
-.favoriteidol-conatiner {
+.favoriteidol-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -9,4 +9,25 @@
 .favoriteidol-card-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.favoriteidol-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoriteidol-card-delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }

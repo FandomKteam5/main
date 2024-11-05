@@ -14,15 +14,21 @@ const FavoriteIdol = ({ favoriteList, removeFavoriteIdol }) => {
       <div className="favoriteidol-card-container">
         {favoriteList.map((card) => {
           return (
-            <>
-              <button onClick={() => handleRemove(card.id)}>x</button>
+            <div className="favoriteidol-card-wrapper" key={card.id}>
+              <button
+                className="favoriteidol-card-delete-btn"
+                onClick={() => handleRemove(card.id)}
+              >
+                x
+              </button>
               <IdolCard
                 key={card.id}
                 name={card.name}
-                image={card.image}
-                groupName={card.groupName}
+                image={card.profilePicture}
+                groupName={card.group}
+                size="small"
               />
-            </>
+            </div>
           );
         })}
       </div>
