@@ -1,4 +1,5 @@
 import RankItem from './RankItem';
+import '../../../styles/listpage/IdolChart.css';
 
 const IdolChart = ({ idolList }) => {
   // const sortedVoteIdols = [...idols].sort(
@@ -6,9 +7,11 @@ const IdolChart = ({ idolList }) => {
   // );
 
   return (
-    <ul className="idolListUl">
+    <ul className="idol-list">
       {idolList &&
-        idolList.map((idols) => <RankItem key={idols.id} idol={idols} />)}
+        idolList.map((idols, index) => (
+          <RankItem key={idols.id} rank={index + 1} idol={idols} />
+        ))}
     </ul>
   );
 };

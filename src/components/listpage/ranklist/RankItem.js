@@ -1,3 +1,5 @@
+import '../../../styles/listpage/RankItem.css';
+
 const RankItem = ({ rank, idol }) => {
   return (
     <li className="rank-item">

@@ -1,4 +1,4 @@
-.idol-card {
+/* .idol-card {
   display: flex;
   align-items: center;
   width: 90%;
@@ -41,4 +41,12 @@
 .idol-votes {
   font-size: 14px;
   color: #ccc;
+} */
+
+.idol-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0;
+  list-style: none;
 }
