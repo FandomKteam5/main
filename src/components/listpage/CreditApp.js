@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import creditLogo from '../../assets/images/Group 33588.png';
+import creditLogo from '../../assets/images/credit.png';
 import '../../styles/CreditApp.css';
 
 function CreditApp() {
@@ -68,8 +68,10 @@ function CreditApp() {
               className={`credit__modal--selectButton ${chargeAmount === 100 ? 'active' : ''}`}
               onClick={() => handleAmountChange(100)}
             >
-              <img src={creditLogo} alt="credit" />
-              100
+              <div className="credit__modal--logobox">
+                <img src={creditLogo} alt="credit" />
+                100
+              </div>
               <span
                 className={`radio-icon ${chargeAmount === 100 ? 'active' : ''}`}
               />
@@ -78,8 +80,10 @@ function CreditApp() {
               className={`credit__modal--selectButton ${chargeAmount === 500 ? 'active' : ''}`}
               onClick={() => handleAmountChange(500)}
             >
-              <img src={creditLogo} alt="credit" />
-              500
+              <div className="credit__modal--logobox">
+                <img src={creditLogo} alt="credit" />
+                500
+              </div>
               <span
                 className={`radio-icon ${chargeAmount === 500 ? 'active' : ''}`}
               />
@@ -88,8 +92,10 @@ function CreditApp() {
               className={`credit__modal--selectButton ${chargeAmount === 1000 ? 'active' : ''}`}
               onClick={() => handleAmountChange(1000)}
             >
-              <img src={creditLogo} alt="credit" />
-              1000
+              <div className="credit__modal--logobox">
+                <img src={creditLogo} alt="credit" />
+                1000
+              </div>
               <span
                 className={`radio-icon ${chargeAmount === 1000 ? 'active' : ''}`}
               />

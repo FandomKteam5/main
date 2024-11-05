@@ -47,7 +47,7 @@ const LandingPage = () => {
             <br />
             쉽게 조공해 보세요
           </h2>
-          <img src={home1} />
+          <img src={home1} alt="home1" />
         </section>
         <section className="body__section--middle landingPage__sections">
           <p className="body__section--emphasize">이달의 아티스트</p>
@@ -56,7 +56,7 @@ const LandingPage = () => {
             <br />
             영예를 선물하세요
           </h2>
-          <img src={home2} />
+          <img src={home2} alt="home2" />
         </section>
         <section className="body__section--bottom landingPage__sections">
           <p className="body__section--emphasize">나만의 아티스트</p>
@@ -65,7 +65,7 @@ const LandingPage = () => {
             <br />
             소식을 모아보세요
           </h2>
-          <img src={home3} />
+          <img src={home3} alt="home3" />
         </section>
       </main>
     </div>

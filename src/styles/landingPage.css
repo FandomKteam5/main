@@ -8,7 +8,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
 }
 
 .header__section {
@@ -22,7 +21,9 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 50px;
 }
+
 .header__section--title {
   font-size: 26px;
   font-weight: 700;
@@ -30,15 +31,18 @@ body {
   text-align: center;
   margin-bottom: 10px;
 }
+
 .header__section--emphasize {
   color: #f96d69;
 }
+
 .header__section--logo {
   width: 509px;
   height: 97px;
   cursor: pointer;
   margin: 10px 0;
 }
+
 .landingPage__header--button {
   background: linear-gradient(90deg, #f86f65 0%, #fe5493 100%);
   width: 477px;
@@ -60,16 +64,26 @@ body {
   line-height: 26px;
   margin-top: 500px;
 }
+
 .main__sections {
   position: relative;
+  gap: 10px;
 }
+
 .body__section--top,
 .body__section--middle,
 .body__section--bottom {
   width: 100%;
-  padding: 20px;
   text-align: center;
+  margin: 200px;
 }
+
+.body__section--top,
+.body__section--middle,
+.body__section--bottom img {
+  margin: 50px;
+}
+
 .landingPage__divider {
   position: absolute;
   top: 0;
@@ -89,6 +103,7 @@ body {
   );
   z-index: -1;
 }
+
 .body__section--emphasize {
   font-size: 16px;
   font-weight: 500;
@@ -96,26 +111,30 @@ body {
   text-align: center;
   color: #d2c030;
 }
+
 .body__section--title {
   font-size: 24px;
   font-weight: 700;
   line-height: 28.64px;
   text-align: center;
 }
+
 .body__section--top {
-  background-image: url(../assets/images/Mask\ group.png);
+  background-image: url(../assets/images/Mask_group-1.png);
   background-repeat: no-repeat;
   background-position: center;
   justify-content: start;
 }
+
 .body__section--middle {
-  background-image: url(../assets/images/Mask\ group-2.png);
+  background-image: url(../assets/images/Mask_group-2.png);
   background-repeat: no-repeat;
   background-position: center;
   justify-content: start;
 }
+
 .body__section--bottom {
-  background-image: url(../assets/images/Mask\ group-3.png);
+  background-image: url(../assets/images/Mask_group-3.png);
   background-repeat: no-repeat;
   background-position: center;
   justify-content: start;
