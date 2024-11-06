@@ -52,10 +52,8 @@ const ChartOfMonth = () => {
     }
   };
 
-  // 투표 후 리스트 재요청 (refetch)
+  // 투표 후 리스트 재요청
   const handleVoteComplete = () => {
-    setPage(1); // 페이지 리셋
-    setIdolList([]); // 기존 리스트 초기화
     fetchIdols(); // 데이터 다시 요청
   };
 
@@ -64,7 +62,7 @@ const ChartOfMonth = () => {
     setIdolList([]);
     setHasMore([]);
     setPage(1); // 첫 페이지로 페이지 리셋
-    fetchIdols(true);
+    fetchIdols();
   }, [currentTab]);
 
   // 페이지 전환 시 아이돌 가져오기
