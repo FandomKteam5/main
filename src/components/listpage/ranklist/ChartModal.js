@@ -8,15 +8,12 @@ const ChartModal = ({
   isOpen, // 모달 열림 여부
   closeModal, // 모달 닫기 함수
   currentTab, // 현재 탭 (성별에 따라 아이돌 목록 변경)
-  // idolList,
-
-  //userCredit, // 사용자 크레딧
   //setUserCredit, // 사용자 크레딧 상태 설정 함수
 }) => {
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [showLackModal, setShowLackModal] = useState(false);
   const [idolList, setIdolList] = useState([]); // 아이돌 목록
-  const userCredit = localStorage.getItem('credit');
+  const userCredit = localStorage.getItem('credit'); // 사용자 크레딧
 
   // 아이돌 차트 가져오기
   // const fetchIdols = async () => {
@@ -59,10 +56,12 @@ const ChartModal = ({
         // 크레딧 충분한지 확인
         try {
           await postVotes(selectedIdol.id); // API 호출로 투표
-          localStorage.setItem(userCredit - 1000); // 크레딧 차감
+          localStorage.setItem('credit', userCredit - 1000); // 크레딧 차감
+          console.log(1);
           alert(`${selectedIdol.name}에 투표했습니다!`);
           closeModal();
         } catch (error) {
+          console.log(2);
           alert('투표 중 오류가 발생했습니다.');
         }
       } else {

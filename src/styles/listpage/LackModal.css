@@ -11,82 +11,54 @@
   z-index: 1000;
 }
 
-.modal-content {
-  background: #1b1b1b;
-  color: white;
-  width: 90%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 8px;
+.popup-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  width: 343px;
+  height: 323px;
+  padding: 30px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
 }
 
 .close-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.modal-body {
-  margin-top: 10px;
+.popup-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
 }
 
-.modal-list {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  max-height: 300px;
-  overflow-x: scroll;
+.popup-notification {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
-.modal-list::-webkit-scrollbar {
-  display: none;
+.highlight-text {
+  color: #ff4d4d;
 }
 
-.idol-radio {
-  accent-color: #ff5f6d;
-  width: 16px;
-  height: 16px;
-}
-
-.vote-button {
+.confirm-button {
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
   background: linear-gradient(90deg, #f86f65, #fe5493);
   border: none;
-  color: white;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.vote-button:hover {
+.confirm-button:hover {
   background: linear-gradient(90deg, #f86f65, #fe5493);
-}
-
-.credit-info {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 14px;
-  color: #aaa;
-}
-
-.credit-cost {
-  color: #f96d69;
-  font-weight: bold;
 }
