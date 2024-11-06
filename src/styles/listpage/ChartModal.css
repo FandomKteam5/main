@@ -83,6 +83,11 @@
   transform: scale(1.2);
 }
 
+.modal-footer {
+  position: sticky;
+  bottom: 0;
+}
+
 .vote-button {
   width: 100%;
   padding: 10px;

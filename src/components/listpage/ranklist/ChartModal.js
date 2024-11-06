@@ -9,6 +9,7 @@ const ChartModal = ({
   closeModal, // 모달 닫기 함수
   currentTab, // 현재 탭 (성별에 따라 아이돌 목록 변경)
   //setUserCredit, // 사용자 크레딧 상태 설정 함수
+  onVoteSuccess,
 }) => {
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [showLackModal, setShowLackModal] = useState(false);
@@ -50,18 +51,16 @@ const ChartModal = ({
   // 투표 핸들러 함수
   const handleVote = async () => {
     if (selectedIdol) {
-      console.log(userCredit);
       // 선택된 아이돌이 있을 경우
       if (userCredit >= 1000) {
         // 크레딧 충분한지 확인
         try {
           await postVotes(selectedIdol.id); // API 호출로 투표
           localStorage.setItem('credit', userCredit - 1000); // 크레딧 차감
-          console.log(1);
           alert(`${selectedIdol.name}에 투표했습니다!`);
+          onVoteSuccess(selectedIdol.id);
           closeModal();
         } catch (error) {
-          console.log(2);
           alert('투표 중 오류가 발생했습니다.');
         }
       } else {
@@ -121,13 +120,15 @@ const ChartModal = ({
                   </li>
                 ))}
             </ul>
-            <button onClick={handleVote} className="vote-button">
-              투표하기
-            </button>
-            <p className="credit-info">
-              투표하는 데 <span className="credit-cost">1000 크레딧</span>이
-              소모됩니다.
-            </p>
+            <div className="modal-footer">
+              <button onClick={handleVote} className="vote-button">
+                투표하기
+              </button>
+              <p className="credit-info">
+                투표하는 데 <span className="credit-cost">1000 크레딧</span>이
+                소모됩니다.
+              </p>
+            </div>
           </div>
         </div>
       </div>
