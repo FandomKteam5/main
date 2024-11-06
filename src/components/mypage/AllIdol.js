@@ -1,7 +1,9 @@
 import '../../styles/mypage/allidol.css';
 import AllIdolSelect from './AllIdolSelect';
+import AllIdolSelectMobile from './AllIdolSelectMobile';
 
 const AllIdol = ({
+  cursor,
   loadingError,
   getListError,
   handleGetListError,
@@ -12,6 +14,8 @@ const AllIdol = ({
   addFavoriteIdol,
   favoriteList,
   tempFavoriteList,
+  isMobile,
+  pageSize,
 }) => {
   if (getListError) {
     return (
@@ -29,23 +33,36 @@ const AllIdol = ({
 
   return (
     <div className="allidol-conatiner">
-      <p>관심 있는 아이돌을 추가해보세요.</p>
+      <div className="allidol-title">
+        <p>관심 있는 아이돌을 추가해보세요.</p>
+      </div>
       <div className="allidol-card-container">
         {isLoading ? (
           <p>아이돌 목록을 가져오는 중입니다...</p>
-        ) : (
-          <AllIdolSelect
+        ) : isMobile ? (
+          <AllIdolSelectMobile
+            cursor={cursor}
             loadingError={loadingError}
             idolList={idolList}
             handleLoadMore={handleLoadMore}
             addFavoriteIdolTemp={addFavoriteIdolTemp}
             favoriteList={favoriteList}
             tempFavoriteList={tempFavoriteList}
+            onClickAdd={onClickAdd}
+          />
+        ) : (
+          <AllIdolSelect
+            pageSize={pageSize}
+            cursor={cursor}
+            loadingError={loadingError}
+            idolList={idolList}
+            handleLoadMore={handleLoadMore}
+            addFavoriteIdolTemp={addFavoriteIdolTemp}
+            favoriteList={favoriteList}
+            tempFavoriteList={tempFavoriteList}
+            onClickAdd={onClickAdd}
           />
         )}
-      </div>
-      <div className="allidol-addBtn-container">
-        <button onClick={onClickAdd}>추가하기</button>
       </div>
     </div>
   );

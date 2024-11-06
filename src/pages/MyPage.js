@@ -6,39 +6,45 @@ import Container from '../components/common/Container';
 import { getIdols } from '../services/MyPageApi';
 import { useState, useEffect } from 'react';
 
+import useWindowSize from '../components/hooks/useWindowSize';
+
 const MyPage = () => {
   const [getListError, setGetListError] = useState(null);
 
   const [favoriteList, setFavoriteList] = useState([]);
   const [idolList, setIdolList] = useState([]);
 
-  const [cursor, setCursor] = useState(0);
-  const [pageSize, setPageSize] = useState(8);
+  const [cursor, setCursor] = useState();
+  const [pageSize, setPageSize] = useState();
 
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
 
   const [tempFavoriteList, setTempFavoriteList] = useState([]);
 
-  // 반응형 웹을 위한 창 크기에 따른 페이지 사이즈 변경
-  const handleResize = () => {
-    if (window.innerWidth < 768) {
-      setPageSize(6);
-    } else if (window.innerWidth < 1024) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 반응형을 위한 창 크기 상태
+  const windowSize = useWindowSize();
+
+  // 창 크기에 따른 페이지 상태 변경
+  useEffect(() => {
+    if (windowSize.width < 768) {
+      setIsMobile(true);
+      setPageSize(9);
+      console.log(isMobile);
+    } else if (windowSize.width < 1024) {
+      setIsMobile(false);
       setPageSize(8);
     } else {
+      setIsMobile(false);
       setPageSize(16);
     }
-  };
-
-  // 창 크기 변경 이벤트 등록
-  useEffect(() => {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    // 페이지 크기에 따라 아이돌 목록 가져오기
+    handleLoadIdols({ cursor: 0, pageSize });
+    // 관심있는 아이돌 목록 가져오기
+    getFavoriteIdols();
+  }, [windowSize]);
 
   // 아이돌 목록 가져오는데 실패했을 때
   const handleGetListError = (error) => {
@@ -67,13 +73,16 @@ const MyPage = () => {
       setIsLoading(true);
       setLoadingError(null);
       result = await getIdols(options);
+      console.log(result);
     } catch (error) {
       setLoadingError(error);
+      console.error(error);
       return;
     } finally {
       setIsLoading(false);
     }
 
+    // 아이돌 목록 가져오기 성공 시
     const { list, nextCursor } = result;
     if (options.cursor === 0) {
       setIdolList(list);
@@ -82,7 +91,6 @@ const MyPage = () => {
         return [...prev, ...list];
       });
     }
-
     setCursor(nextCursor);
   };
 
@@ -117,18 +125,6 @@ const MyPage = () => {
     setTempFavoriteList([]);
   };
 
-  // 페이지 사이즈 변경
-  const handlePageSizeChange = (size) => {
-    setPageSize(size);
-    handleLoadIdols({ cursor: 0, pageSize: size });
-  };
-
-  // 컴포넌트가 처음 렌더링될 때 아이돌 목록 가져오기
-  useEffect(() => {
-    handleLoadIdols({ cursor: 0, pageSize });
-    getFavoriteIdols();
-  }, []);
-
   return (
     <Container>
       <div className="mypage-container">
@@ -137,6 +133,7 @@ const MyPage = () => {
           removeFavoriteIdol={removeFavoriteIdol}
         />
         <AllIdol
+          pageSize={pageSize}
           cursor={cursor}
           loadingError={loadingError}
           getListError={getListError}
@@ -144,11 +141,11 @@ const MyPage = () => {
           idolList={idolList}
           isLoading={isLoading}
           handleLoadMore={handleLoadMore}
-          handlePageSizeChange={handlePageSizeChange}
           addFavoriteIdolTemp={addFavoriteIdolTemp}
           addFavoriteIdol={addFavoriteIdol}
           favoriteList={favoriteList}
           tempFavoriteList={tempFavoriteList}
+          isMobile={isMobile}
         />
       </div>
     </Container>

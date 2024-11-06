@@ -1,0 +1,39 @@
+.allidolselectmobile-container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.allidolselectmobile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-y: auto;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.allidolselectmobile-addbtn-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0.5); /* 투명하지만 어두운 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allidolselectmobile-addbtn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #f77063 0%, #fe5790 100%);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
