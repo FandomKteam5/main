@@ -15,6 +15,7 @@ const AllIdol = ({
   favoriteList,
   tempFavoriteList,
   isMobile,
+  pageSize,
 }) => {
   if (getListError) {
     return (
@@ -32,7 +33,9 @@ const AllIdol = ({
 
   return (
     <div className="allidol-conatiner">
-      <p>관심 있는 아이돌을 추가해보세요.</p>
+      <div className="allidol-title">
+        <p>관심 있는 아이돌을 추가해보세요.</p>
+      </div>
       <div className="allidol-card-container">
         {isLoading ? (
           <p>아이돌 목록을 가져오는 중입니다...</p>
@@ -49,6 +52,8 @@ const AllIdol = ({
           />
         ) : (
           <AllIdolSelect
+            pageSize={pageSize}
+            cursor={cursor}
             loadingError={loadingError}
             idolList={idolList}
             handleLoadMore={handleLoadMore}

@@ -9,7 +9,9 @@
 .favoriteidol-card-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
+  width: 100%;
+  overflow-x: auto;
   gap: 10px;
 }
 

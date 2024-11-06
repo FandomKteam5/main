@@ -6,10 +6,10 @@ const apiUrl = process.env.REACT_APP_BASE_URL;
 // cursor: number(query) 커서(옵션)
 // pageSize: number(query)
 // keyword: string(query) 검색키워드(옵션)
-export const getIdols = async ({ cursor, pageSize = 16 } = {}) => {
+export const getIdols = async ({ cursor = 0, pageSize = 16 } = {}) => {
   const queryParams = new URLSearchParams();
 
-  if (cursor !== undefined) {
+  if (cursor !== null) {
     queryParams.append('cursor', cursor);
   }
   queryParams.append('pageSize', pageSize);

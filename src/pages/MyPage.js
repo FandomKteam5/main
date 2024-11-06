@@ -14,8 +14,8 @@ const MyPage = () => {
   const [favoriteList, setFavoriteList] = useState([]);
   const [idolList, setIdolList] = useState([]);
 
-  const [cursor, setCursor] = useState(0);
-  const [pageSize, setPageSize] = useState(8);
+  const [cursor, setCursor] = useState();
+  const [pageSize, setPageSize] = useState();
 
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
@@ -32,6 +32,7 @@ const MyPage = () => {
     if (windowSize.width < 768) {
       setIsMobile(true);
       setPageSize(9);
+      console.log(isMobile);
     } else if (windowSize.width < 1024) {
       setIsMobile(false);
       setPageSize(8);
@@ -39,6 +40,10 @@ const MyPage = () => {
       setIsMobile(false);
       setPageSize(16);
     }
+    // 페이지 크기에 따라 아이돌 목록 가져오기
+    handleLoadIdols({ cursor: 0, pageSize });
+    // 관심있는 아이돌 목록 가져오기
+    getFavoriteIdols();
   }, [windowSize]);
 
   // 아이돌 목록 가져오는데 실패했을 때
@@ -68,13 +73,16 @@ const MyPage = () => {
       setIsLoading(true);
       setLoadingError(null);
       result = await getIdols(options);
+      console.log(result);
     } catch (error) {
       setLoadingError(error);
+      console.error(error);
       return;
     } finally {
       setIsLoading(false);
     }
 
+    // 아이돌 목록 가져오기 성공 시
     const { list, nextCursor } = result;
     if (options.cursor === 0) {
       setIdolList(list);
@@ -83,7 +91,6 @@ const MyPage = () => {
         return [...prev, ...list];
       });
     }
-
     setCursor(nextCursor);
   };
 
@@ -118,12 +125,6 @@ const MyPage = () => {
     setTempFavoriteList([]);
   };
 
-  // 컴포넌트가 처음 렌더링될 때 아이돌 목록 가져오기
-  useEffect(() => {
-    handleLoadIdols({ cursor: 0, pageSize });
-    getFavoriteIdols();
-  }, []);
-
   return (
     <Container>
       <div className="mypage-container">
@@ -132,6 +133,7 @@ const MyPage = () => {
           removeFavoriteIdol={removeFavoriteIdol}
         />
         <AllIdol
+          pageSize={pageSize}
           cursor={cursor}
           loadingError={loadingError}
           getListError={getListError}
