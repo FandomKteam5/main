@@ -3,7 +3,7 @@ import logo from '../assets/images/Fandom-K.svg';
 import home1 from '../assets/images/Home-1.png';
 import home2 from '../assets/images/Home-2.png';
 import home3 from '../assets/images/Home-3.png';
-import '../styles/landingPage.css';
+import '../styles/LandingPage.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -38,8 +38,10 @@ const LandingPage = () => {
           지금 시작하기
         </button>
       </section>
+
       <main className="main__sections landingPage__sections">
         <div className="landingPage__divider"></div>
+
         <section className="body__section--top">
           <p className="body__section--emphasize">후원하기</p>
           <h2 className="body__section--title">
@@ -47,8 +49,10 @@ const LandingPage = () => {
             <br />
             쉽게 조공해 보세요
           </h2>
-          <img src={home1} />
+          <img src={home1} alt="home1" />
         </section>
+        <div className="topsection__background"></div>
+
         <section className="body__section--middle landingPage__sections">
           <p className="body__section--emphasize">이달의 아티스트</p>
           <h2 className="body__section--title">
@@ -56,8 +60,10 @@ const LandingPage = () => {
             <br />
             영예를 선물하세요
           </h2>
-          <img src={home2} />
+          <img src={home2} alt="home2" />
         </section>
+        <div className="middlesection__background"></div>
+
         <section className="body__section--bottom landingPage__sections">
           <p className="body__section--emphasize">나만의 아티스트</p>
           <h2 className="body__section--title">
@@ -65,8 +71,9 @@ const LandingPage = () => {
             <br />
             소식을 모아보세요
           </h2>
-          <img src={home3} />
+          <img src={home3} alt="home3" />
         </section>
+        <div className="bottomsection__background"></div>
       </main>
     </div>
   );
