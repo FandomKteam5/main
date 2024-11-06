@@ -11,7 +11,7 @@ const RankItem = ({ rank, idol }) => {
         </p>
       </div>
       <p className="idol-votes">
-        {idol.voteCount ? idol.totalVotes.toLocaleString() : '0'}표
+        {idol.totalVotes ? idol.totalVotes.toLocaleString() : '0'}표
       </p>
     </li>
   );

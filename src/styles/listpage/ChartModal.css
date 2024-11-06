@@ -19,6 +19,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
   overflow-y: scroll;
 }
 .modal-content::-webkit-scrollbar {
@@ -36,11 +37,13 @@
   font-size: 18px;
   color: #ffffff;
 }
-
 .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 20px;
   cursor: pointer;
 }
@@ -52,6 +55,7 @@
 }
 
 .modal-list {
+  list-style: none;
   display: flex;
   flex-direction: row;
   display: inline-block;

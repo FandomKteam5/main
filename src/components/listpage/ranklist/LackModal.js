@@ -1,5 +1,5 @@
 import '../../../styles/listpage/LackModal.css';
-import { ReactComponent as CreditIcon } from '../../../assets/icons/credit.svg';
+import CreditIcon from '../../../assets/images/credit.png';
 
 function LackModal({ onClose }) {
   return (

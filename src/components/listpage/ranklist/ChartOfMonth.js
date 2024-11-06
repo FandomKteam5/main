@@ -3,7 +3,6 @@ import { getCharts } from '../../../services/RankApi';
 import IdolChart from './IdolChart';
 import { ReactComponent as Chart } from '../../../assets/icons/chart.svg';
 import ChartModal from './ChartModal';
-// import MoreButton from "./MoreButton"; //
 import '../../../styles/listpage/ChartOfMonth.css';
 
 // 모달 open, close를 위한 state
@@ -45,36 +44,6 @@ const ChartOfMonth = () => {
   const [hasMore, setHasMore] = useState(true); // 더보기
 
   // 성별과 페이지에 따른 데이터 가져오기
-  // const fetchIdols = async () => {
-  //   const chart = await handleLoad({ gender: currentTab, page, limit: 10 });
-  //   if (chart && chart.results) {
-  //     setIdolList((prevList) => [...prevList, ...chart.results]);
-  //     setHasMore(chart.next !== null); // 다음 페이지가 있는지 확인
-  //   }
-  // };
-
-  // const fetchIdols = async (reset = false) => {
-  //   const data = await handleLoad({ gender: currentTab, page, limit: 10 });
-  //   if (data.idols) {
-  //     const sortedResults = data.idols.sort(
-  //       (a, b) => b.totalVotes - a.totalVotes
-  //     ); // totalVotes 기준으로 내림차순 정렬
-  //     setIdolList((prevList) =>
-  //       reset ? sortedResults : [...prevList, ...sortedResults]
-  //     );
-  //     // setIdolList((prevList) =>
-  //     //   reset ? data.results : [...prevList, ...data.results]
-  //     // ); // 새로 로드 시 목록 초기화
-  //     // setHasMore(data.nextPage !== null); // 다음 페이지가 있는지 확인
-  //     if (!data.nextCursor || data.idols.length === 0) {
-  //       setHasMore(false);
-  //       setPage(null);
-  //     } else {
-  //       setHasMore(true);
-  //       setPage(data.idols.nextCursor); // 다음 페이지 설정
-  //     }
-  //   }
-  // };
   const fetchIdols = async () => {
     const data = await handleLoad({ gender: currentTab, page, limit: 10 });
     if (data.idols) {
@@ -83,12 +52,14 @@ const ChartOfMonth = () => {
     }
   };
 
+  // 투표 후 리스트 재요청 (refetch)
+  const handleVoteComplete = () => {
+    setPage(1); // 페이지 리셋
+    setIdolList([]); // 기존 리스트 초기화
+    fetchIdols(); // 데이터 다시 요청
+  };
+
   // 성별 전환 시 리스트 리셋 및 새로운 데이터 가져오기
-  // useEffect(() => {
-  //   setIdolList([]);
-  //   setPage(1); // 첫 페이지로 페이지 리셋
-  //   fetchIdols();
-  // }, [currentTab]);
   useEffect(() => {
     setIdolList([]);
     setHasMore([]);
@@ -111,9 +82,6 @@ const ChartOfMonth = () => {
   };
 
   // 더 보기 클릭시 아이돌 가져오기
-  // const loadMore = () => {
-  //   setPage((prevPage) => prevPage + 1);
-  // };
   const loadMore = () => {
     if (hasMore && !isLoading) {
       setPage((prevPage) => prevPage + 1);
@@ -165,7 +133,7 @@ const ChartOfMonth = () => {
           isOpen={isOpen}
           closeModal={closeModal}
           currentTab={currentTab}
-          // setIsVote={() => {}}
+          onVoteComplete={handleVoteComplete} // 투표 완료 후 재요청 함수 전달
         />
       )}
     </div>
