@@ -55,6 +55,7 @@
 }
 
 .modal-list {
+  position: relative;
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -87,10 +88,13 @@
   transform: scale(1.2);
 }
 
-.modal-footer {
-  position: sticky;
+/* .modal-footer {
+  position: absolute;
   bottom: 0;
-}
+  width: 477px;
+  height: 112px;
+  background-color: #181d26;
+} */
 
 .vote-button {
   width: 100%;
@@ -101,7 +105,7 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   transition: background-color 0.3s;
 }
 
