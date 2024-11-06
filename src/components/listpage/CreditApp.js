@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import creditLogo from '../../assets/images/credit.png';
+import creditLogo from '../../assets/images/credit-small.png';
 import '../../styles/CreditApp.css';
 
 function CreditApp() {
