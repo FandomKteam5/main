@@ -43,7 +43,6 @@ const ChartOfMonth = () => {
   const [currentTab, setCurrentTab] = useState('female'); // 현재 탭의 성별
   const [page, setPage] = useState(1); // 현재 페이지
   const [hasMore, setHasMore] = useState(true); // 더보기
-  const [votingResult, setVotingResult] = useState(null); // 투표
 
   // 성별과 페이지에 따른 데이터 가져오기
   // const fetchIdols = async () => {
@@ -95,7 +94,7 @@ const ChartOfMonth = () => {
     setHasMore([]);
     setPage(1); // 첫 페이지로 페이지 리셋
     fetchIdols(true);
-  }, [currentTab, votingResult]);
+  }, [currentTab]);
 
   // 페이지 전환 시 아이돌 가져오기
   useEffect(() => {
@@ -122,9 +121,6 @@ const ChartOfMonth = () => {
   };
 
   // TODO: 투표 요청 성공 후 리스트 재요청(refetch) 필요
-  const handleVoteSuccess = (idolId) => {
-    setVotingResult(idolId);
-  };
 
   return (
     <div className="chart-container">
@@ -170,7 +166,6 @@ const ChartOfMonth = () => {
           closeModal={closeModal}
           currentTab={currentTab}
           // setIsVote={() => {}}
-          onVoteSuccess={handleVoteSuccess} // 투표 전달
         />
       )}
     </div>

@@ -9,7 +9,7 @@ const ChartModal = ({
   closeModal, // 모달 닫기 함수
   currentTab, // 현재 탭 (성별에 따라 아이돌 목록 변경)
   //setUserCredit, // 사용자 크레딧 상태 설정 함수
-  onVoteSuccess,
+  // onVoteSuccess,
 }) => {
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [showLackModal, setShowLackModal] = useState(false);
@@ -58,7 +58,7 @@ const ChartModal = ({
           await postVotes(selectedIdol.id); // API 호출로 투표
           localStorage.setItem('credit', userCredit - 1000); // 크레딧 차감
           alert(`${selectedIdol.name}에 투표했습니다!`);
-          onVoteSuccess(selectedIdol.id);
+          // onVoteSuccess(selectedIdol.id);
           closeModal();
         } catch (error) {
           alert('투표 중 오류가 발생했습니다.');
