@@ -43,7 +43,8 @@ const ChartModal = ({
           await postVotes(selectedIdol.id); // API 호출로 투표
           localStorage.setItem('credit', userCredit - 1000); // 크레딧 차감
           alert(`${selectedIdol.name}에 투표했습니다!`);
-          closeModal();
+          // closeModal();
+          window.location.reload(); // 임시방편
         } catch (error) {
           alert('투표 중 오류가 발생했습니다.');
         }
@@ -55,8 +56,6 @@ const ChartModal = ({
       alert('투표할 아이돌을 선택해주세요!'); // 아이돌 선택 안 된 경우
     }
   };
-
-  // 재요청 필요
 
   // 크레딧 부족 모달 닫기
   const closeLackModal = () => {
@@ -89,9 +88,7 @@ const ChartModal = ({
                       key={idols.id}
                       rank={index + 1}
                       idol={idols}
-                      onClick={() => setSelectedIdol(idols)}
-                      isSelected={selectedIdol?.id === idols.id}
-                      isVote={idols.isVote}
+                      align="column"
                     />
                     <input
                       type="radio"

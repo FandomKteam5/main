@@ -17,20 +17,3 @@ const IdolChart = ({ idolList }) => {
 };
 
 export default IdolChart;
-
-// const IdolChart = ({ idolList }) => {
-//   const sortedIdolList = [...idolList].sort(
-//     (a, b) => b.totalVotes - a.totalVotes
-//   );
-
-//   return (
-//     <ul className="idol-list">
-//       {sortedIdolList &&
-//         sortedIdolList.map((idols, index) => (
-//           <RankItem key={idols.id} rank={index + 1} idol={idols} />
-//         ))}
-//     </ul>
-//   );
-// };
-
-// export default IdolChart;

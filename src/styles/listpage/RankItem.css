@@ -29,13 +29,21 @@
   margin-right: 12px;
 }
 
+.column-idol {
+  /* display: flex;
+  flex-direction: column; */
+  text-align: center;
+}
+
 .idol-name {
   font-size: 16px;
   color: #ffffff;
+  margin-bottom: 4px;
 }
 
 .idol-votes {
   font-size: 16px;
   color: #ffffff;
-  text-align: right;
+  text-align: left;
+  margin: 0;
 }
