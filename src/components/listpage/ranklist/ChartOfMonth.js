@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getCharts, getIdolList } from '../../../services/RankApi';
+import { getCharts } from '../../../services/RankApi';
 import IdolChart from './IdolChart';
 import { ReactComponent as Chart } from '../../../assets/icons/chart.svg';
 import ChartModal from './ChartModal';
-// import MoreButton from "./MoreButton"; //
 import '../../../styles/listpage/ChartOfMonth.css';
 
 // 모달 open, close를 위한 state
@@ -44,68 +43,7 @@ const ChartOfMonth = () => {
   const [page, setPage] = useState(1); // 현재 페이지
   const [hasMore, setHasMore] = useState(true); // 더보기
 
-  // 콘솔로 fetch 확인
-  useEffect(() => {
-    // getCharts 데이터를 가져와 콘솔에 출력하는 함수
-    const fetchAndLogCharts = async () => {
-      try {
-        const data = await getCharts({ gender: 'female', page: 1, limit: 10 }); // 기본 매개변수 전달
-        setIdolList(data.idols); // 아이돌 목록을 상태에 저장
-        console.log('차트 데이터 가져오기:', data); // 데이터를 콘솔에 출력
-      } catch (error) {
-        console.error('에러 발생', error); // 에러가 발생할 경우 콘솔에 출력
-      }
-    };
-
-    fetchAndLogCharts(); // 컴포넌트가 마운트될 때 호출
-  }, []);
-
-  // 콘솔로 fetch 확인
-  useEffect(() => {
-    // 아이돌 데이터를 가져와 콘솔에 출력하는 함수
-    const fetchAndLoadIdols = async () => {
-      try {
-        const data = await getIdolList({ pageSize: 10, keyword: '' }); // 예시로 여성 아이돌 데이터를 가져옴
-        console.log('아이돌 데이터 가져오기:', data);
-      } catch (error) {
-        console.error('에러 발생', error);
-      }
-    };
-
-    fetchAndLoadIdols(); // 컴포넌트가 마운트될 때 호출
-  }, []);
-
   // 성별과 페이지에 따른 데이터 가져오기
-  // const fetchIdols = async () => {
-  //   const chart = await handleLoad({ gender: currentTab, page, limit: 10 });
-  //   if (chart && chart.results) {
-  //     setIdolList((prevList) => [...prevList, ...chart.results]);
-  //     setHasMore(chart.next !== null); // 다음 페이지가 있는지 확인
-  //   }
-  // };
-
-  // const fetchIdols = async (reset = false) => {
-  //   const data = await handleLoad({ gender: currentTab, page, limit: 10 });
-  //   if (data.idols) {
-  //     const sortedResults = data.idols.sort(
-  //       (a, b) => b.totalVotes - a.totalVotes
-  //     ); // totalVotes 기준으로 내림차순 정렬
-  //     setIdolList((prevList) =>
-  //       reset ? sortedResults : [...prevList, ...sortedResults]
-  //     );
-  //     // setIdolList((prevList) =>
-  //     //   reset ? data.results : [...prevList, ...data.results]
-  //     // ); // 새로 로드 시 목록 초기화
-  //     // setHasMore(data.nextPage !== null); // 다음 페이지가 있는지 확인
-  //     if (!data.nextCursor || data.idols.length === 0) {
-  //       setHasMore(false);
-  //       setPage(null);
-  //     } else {
-  //       setHasMore(true);
-  //       setPage(data.idols.nextCursor); // 다음 페이지 설정
-  //     }
-  //   }
-  // };
   const fetchIdols = async () => {
     const data = await handleLoad({ gender: currentTab, page, limit: 10 });
     if (data.idols) {
@@ -114,12 +52,14 @@ const ChartOfMonth = () => {
     }
   };
 
+  // 투표 후 리스트 재요청 (refetch)
+  const handleVoteComplete = () => {
+    setPage(1); // 페이지 리셋
+    setIdolList([]); // 기존 리스트 초기화
+    fetchIdols(); // 데이터 다시 요청
+  };
+
   // 성별 전환 시 리스트 리셋 및 새로운 데이터 가져오기
-  // useEffect(() => {
-  //   setIdolList([]);
-  //   setPage(1); // 첫 페이지로 페이지 리셋
-  //   fetchIdols();
-  // }, [currentTab]);
   useEffect(() => {
     setIdolList([]);
     setHasMore([]);
@@ -142,14 +82,13 @@ const ChartOfMonth = () => {
   };
 
   // 더 보기 클릭시 아이돌 가져오기
-  // const loadMore = () => {
-  //   setPage((prevPage) => prevPage + 1);
-  // };
   const loadMore = () => {
     if (hasMore && !isLoading) {
       setPage((prevPage) => prevPage + 1);
     }
   };
+
+  // TODO: 투표 요청 성공 후 리스트 재요청(refetch) 필요
 
   return (
     <div className="chart-container">
@@ -194,7 +133,7 @@ const ChartOfMonth = () => {
           isOpen={isOpen}
           closeModal={closeModal}
           currentTab={currentTab}
-          setIsVote={() => {}}
+          onVoteComplete={handleVoteComplete} // 투표 완료 후 재요청 함수 전달
         />
       )}
     </div>

@@ -5,7 +5,6 @@ const ListPage = () => {
   return (
     <div>
       <CreditApp />
-      <h1>List 페이지</h1>
       <ChartOfMonth />
     </div>
   );

@@ -1,6 +1,6 @@
+/* 컨테이너 및 헤더 */
 .chart-container {
-  color: white;
-  /* background-color: #181818; */
+  color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   width: 90%;
@@ -14,11 +14,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .header h1 {
   font-size: 24px;
-  text-align: left;
+  font-weight: bold;
+  /* text-align: left; */
   margin-bottom: 20px;
 }
 
@@ -42,11 +44,11 @@
   height: 16px;
 }
 
+/* Tab */
 .tabs {
   display: flex;
   justify-content: center;
   margin-top: 24px;
-  margin-bottom: 20px;
 }
 
 .tabs button {
@@ -70,19 +72,28 @@
   border-bottom: 1px solid #ffffff;
 }
 
+/* 차트 */
 .idol-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  padding: 0;
+  list-style: none;
 }
 
+.idol-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 더 보기 */
 .load-more-button {
   background-color: #251f20;
   border: 1px;
+  border-style: solid;
+  color: #ffffff;
   border-color: #f1eef9cc;
   padding: 8px 143px;
-  color: white;
   font-size: 14px;
   border-radius: 3px;
   cursor: pointer;
@@ -90,5 +101,6 @@
 }
 
 .load-more-button:hover {
-  background-color: #ff5068;
+  background: linear-gradient(90deg, #f86f65, #fe5493);
+  border: none;
 }

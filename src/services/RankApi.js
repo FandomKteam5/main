@@ -59,9 +59,8 @@ export async function postVotes(id) {
         idolId: id,
       }),
     });
-    if (!response.ok) {
-      throw new Error('투표 실패');
-    }
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error('투표 중 오류 발생:', error);
     throw error;

@@ -16,16 +16,16 @@
 // };
 
 // export default ModalButton;
-import { ReactComponent as ChartIcon } from '../../../assets/icons/chart.svg';
-import './ModalButton.css';
+// import { ReactComponent as ChartIcon } from '../../../assets/icons/chart.svg';
+// import './ModalButton.css';
 
-const ModalButton = ({ onClick, buttonText = '차트 투표하기' }) => {
-  return (
-    <button className="modal-button" onClick={onClick}>
-      <ChartIcon className="modal-button-icon" />
-      {buttonText}
-    </button>
-  );
-};
+// const ModalButton = ({ onClick, buttonText = '차트 투표하기' }) => {
+//   return (
+//     <button className="modal-button" onClick={onClick}>
+//       <ChartIcon className="modal-button-icon" />
+//       {buttonText}
+//     </button>
+//   );
+// };
 
-export default ModalButton;
+// export default ModalButton;

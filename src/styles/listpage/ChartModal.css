@@ -12,89 +12,84 @@
 }
 
 .modal-content {
-  background: #1b1b1b;
-  color: white;
-  width: 90%;
-  max-width: 400px;
+  background: #181d26;
+  color: #ffffff;
+  max-width: 525px;
+  max-height: 693px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow-y: scroll;
+}
+.modal-content::-webkit-scrollbar {
+  display: none;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
   padding-bottom: 10px;
 }
 
+.modal-header h3 {
+  font-size: 18px;
+  color: #ffffff;
+}
 .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 20px;
   cursor: pointer;
 }
 
 .modal-body {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.idol-list {
+.modal-list {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  display: inline-block;
   padding: 0;
   margin: 0;
-  max-height: 300px;
-  overflow-y: auto;
 }
 
-.idol-item {
+.modal-list li {
+  width: 470px;
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #333;
+  padding: 0;
+  margin-bottom: 8px;
 }
 
-.idol-label {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.modal-list::-webkit-scrollbar {
+  display: none;
 }
 
-.idol-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.idol-info {
-  flex-grow: 1;
-}
-
-.idol-rank {
-  font-weight: bold;
-  color: #ff5e57;
-}
-
-.idol-details {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-}
-
-.idol-name {
-  color: #fff;
-}
-
-.idol-votes {
-  color: #aaa;
+.modal-list li:last-child {
+  border-bottom: none;
 }
 
 .idol-radio {
-  width: 20px;
-  height: 20px;
+  accent-color: #ff5f6d;
+  margin: 0 0 0 0;
+  width: 16px;
+  height: 16px;
+  transform: scale(1.2);
+}
+
+.modal-footer {
+  position: sticky;
+  bottom: 0;
 }
 
 .vote-button {
@@ -102,7 +97,7 @@
   padding: 10px;
   background: linear-gradient(90deg, #f86f65, #fe5493);
   border: none;
-  color: white;
+  color: #ffffff;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -122,6 +117,6 @@
 }
 
 .credit-cost {
-  color: #ff5e57;
+  color: #f96d69;
   font-weight: bold;
 }
