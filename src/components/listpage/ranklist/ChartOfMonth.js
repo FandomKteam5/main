@@ -46,7 +46,7 @@ const ChartOfMonth = () => {
   // 성별과 페이지에 따른 데이터 가져오기
   const fetchIdols = async () => {
     const data = await handleLoad({ gender: currentTab, page, limit: 10 });
-    if (data.idols) {
+    if (data && data.idols) {
       const sortedResults = data.idols;
       setIdolList(sortedResults);
     }
