@@ -65,9 +65,15 @@ const ChartModal = ({
   //if (!isOpen) return null; // 모달창이 열려 있지 않으면 렌더링 중지
   if (!isOpen && !showLackModal) return null; // 둘 다 닫혀있으면 렌더링 중지
 
+  const handleOverlayClick = (event) => {
+    if (event.target.className === 'modal-overlay') {
+      closeModal();
+    }
+  };
+
   return (
     <>
-      <div className="modal-overlay">
+      <div className="modal-overlay" onClick={handleOverlayClick}>
         <div className="modal-content">
           <button onClick={closeModal} className="close-button">
             ×
