@@ -1,0 +1,44 @@
+.idolcarousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.idolcarousel-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.idolcarousel-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+
+.idolcarousel-btn {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.idolcarousel-list {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.idolcarousel-item {
+  flex: 1 0 25%; /* 4개의 요소가 한 슬라이드에 들어가도록 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}

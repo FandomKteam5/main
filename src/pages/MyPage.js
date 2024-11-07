@@ -25,15 +25,34 @@ const MyPage = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   // 반응형을 위한 창 크기 상태
-  const windowSize = useWindowSize();
+  const pageState = useWindowSize();
 
   // 창 크기에 따른 페이지 상태 변경
+  // useEffect(() => {
+  //   if (windowSize.width < 768) {
+  //     setIsMobile(true);
+  //     setPageSize(9);
+  //     console.log(isMobile);
+  //   } else if (windowSize.width < 1024) {
+  //     setIsMobile(false);
+  //     setPageSize(8);
+  //   } else {
+  //     setIsMobile(false);
+  //     setPageSize(16);
+  //   }
+  //   // 페이지 크기에 따라 아이돌 목록 가져오기
+  //   handleLoadIdols({ cursor: 0, pageSize });
+  //   // 관심있는 아이돌 목록 가져오기
+  //   getFavoriteIdols();
+  // }, [windowSize]);
+
+  // // 창 크기에 따른 페이지 상태 변경
   useEffect(() => {
-    if (windowSize.width < 768) {
+    if (pageState === 'MOBILE') {
       setIsMobile(true);
       setPageSize(9);
       console.log(isMobile);
-    } else if (windowSize.width < 1024) {
+    } else if (pageState === 'TABLET') {
       setIsMobile(false);
       setPageSize(8);
     } else {
@@ -44,7 +63,7 @@ const MyPage = () => {
     handleLoadIdols({ cursor: 0, pageSize });
     // 관심있는 아이돌 목록 가져오기
     getFavoriteIdols();
-  }, [windowSize]);
+  }, [pageState, pageSize]);
 
   // 아이돌 목록 가져오는데 실패했을 때
   const handleGetListError = (error) => {
