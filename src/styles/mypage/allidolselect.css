@@ -11,12 +11,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+
   width: 100%;
   overflow: hidden; /* 슬라이드 효과를 위해 오버플로우 숨김 */
 }
 
 .allidolselect-card-container {
   display: flex;
+  flex-grow: 1;
   overflow: auto;
 }
 
@@ -32,13 +35,15 @@
   transition: transform 0.5s ease; /* 슬라이드 이동 효과 */
 }
 
-.allidolselect-card-container.tablet {
+.allidolselect-card-list.tablet {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, auto);
 }
 
 .allidolselect-btn {
   cursor: pointer;
+  display: flex;
+  width: 50px;
 }
 
 .allidolselect-btn.disabled {

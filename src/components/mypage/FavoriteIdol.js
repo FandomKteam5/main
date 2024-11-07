@@ -28,6 +28,7 @@ const FavoriteIdol = ({ favoriteList, removeFavoriteIdol }) => {
                   image={card.profilePicture}
                   groupName={card.group}
                   size="small"
+                  onClick={() => {}}
                 />
               </div>
             );

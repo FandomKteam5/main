@@ -9,7 +9,6 @@ import addBtn from '../../assets/icons/Ic_plus_24px.png';
 
 const AllIdolSelect = ({
   cursor,
-  loadingError,
   idolList = [],
   handleLoadMore,
   addFavoriteIdolTemp,
@@ -38,14 +37,15 @@ const AllIdolSelect = ({
 
   const handleNextSlide = async () => {
     if (currentSlide < totalSlides - 1) {
-      setCurrentSlide((prev) => prev + 1);
+      // 마지막 슬라이드가 아닐 때
+      setCurrentSlide((prev) => prev + 1); // 다음 슬라이드로 이동
     } else if (cursor !== null && !isLoading) {
+      // 마지막 슬라이드이고, 커서가 있고, 로딩 중이 아닐 때
       try {
-        setIsLoading(true);
-        // 데이터가 로드된 후 즉시 다음 슬라이드로 이동
-        setCurrentSlide((prev) => prev + 1);
-        await handleLoadMore();
-        setIsLoading(false);
+        setIsLoading(true); // 로딩 중 상태로 변경
+        await handleLoadMore(); // 데이터 로드
+        setIsLoading(false); // 로딩 완료 상태로 변경
+        setCurrentSlide((prev) => prev + 1); // 다음 슬라이드로 이동
       } catch (error) {
         setIsLoading(false);
         console.error('Error loading more data:', error);
@@ -55,7 +55,8 @@ const AllIdolSelect = ({
 
   useEffect(() => {
     setAllIdols(idolList);
-  }, [idolList]);
+    console.log(pageSize);
+  }, [idolList, pageSize]);
 
   const onClick = (id) => {
     addFavoriteIdolTemp(id);
@@ -76,31 +77,26 @@ const AllIdolSelect = ({
         >
           <LeftBtn />
         </div>
-        <div
-          ref={containerRef}
-          className={`allidolselect-card-container ${pageSize === 8 ? 'tablet' : ''}`}
-        >
-          {loadingError ? (
-            <div className="allidolselect-error-message">{loadingError}</div>
-          ) : (
-            <div className="allidolselect-card-list">
-              {getCurrentPageIdols().map((card) => (
-                <IdolCard
-                  onClick={onClick}
-                  key={card.id}
-                  id={card.id}
-                  name={card.name}
-                  image={card.profilePicture}
-                  groupName={card.group}
-                  isSelected={tempFavoriteList.some(
-                    (item) => item.id === card.id
-                  )}
-                  isFavorite={favoriteList.some((item) => item.id === card.id)}
-                  size="large"
-                />
-              ))}
-            </div>
-          )}
+        <div ref={containerRef} className={`allidolselect-card-container`}>
+          <div
+            className={`allidolselect-card-list  ${pageSize === 8 ? 'tablet' : ''}`}
+          >
+            {getCurrentPageIdols().map((card) => (
+              <IdolCard
+                onClick={onClick}
+                key={card.id}
+                id={card.id}
+                name={card.name}
+                image={card.profilePicture}
+                groupName={card.group}
+                isSelected={tempFavoriteList.some(
+                  (item) => item.id === card.id
+                )}
+                isFavorite={favoriteList.some((item) => item.id === card.id)}
+                size="large"
+              />
+            ))}
+          </div>
         </div>
         <div
           className={`allidolselect-btn ${cursor === null && currentSlide === totalSlides - 1 ? 'disabled' : ''}`}

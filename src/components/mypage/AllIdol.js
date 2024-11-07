@@ -61,6 +61,7 @@ const AllIdol = ({
             favoriteList={favoriteList}
             tempFavoriteList={tempFavoriteList}
             onClickAdd={onClickAdd}
+            isLoadings={isLoading}
           />
         )}
       </div>

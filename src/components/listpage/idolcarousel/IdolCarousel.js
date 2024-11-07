@@ -1,70 +1,94 @@
-import fandomKImg6 from '../src/assets/images/fandomK-img7.png';
-import fandomKImg7 from '../src/assets/images/fandomK-img7.png';
-import fandomKImg8 from '../src/assets/images/fandomK-img8.png';
-import fandomKImg1 from '../src/assets/images/fandomK-img (1).png';
-import '/Users/kyuyeonkim/Desktop/main/src/styles/IdolCarousel.css';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
+import '../../../styles/listpage/IdolCarousel.css';
+import { getDonations } from '../../../services/DonationApi';
+import IdolDonationCard from './IdolDonationCard';
 
-const data = [
-  {
-    IdolName: `김민지`,
-    IdolProfilePicture: fandomKImg6,
-    DonationTitle: `뉴진스 민지 지하철 광고`,
-    DonationSubtitle: `강남역 광고`,
-  },
-  {
-    IdolName: `장원영`,
-    IdolProfilePicture: fandomKImg7,
-    DonationTitle: `원영이 20번째 생일`,
-    DonationSubtitle: `강남역 광고`,
-  },
-  {
-    IdolName: `김채원`,
-    IdolProfilePicture: fandomKImg8,
-    DonationTitle: `르세라핌 채원 지하철 광고`,
-    DonationSubtitle: `강남역 광고`,
-  },
-  {
-    IdolName: `제니`,
-    IdolProfilePicture: fandomKImg1,
-    DonationTitle: `블랙핑크 제니 지하철 광고`,
-    DonationSubtitle: `강남역 광고`,
-  },
-];
+const IdolCarousel = () => {
+  const [items, setItems] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const itemsPerSlide = 4;
+  const [totalSlides, setTotalSlides] = useState(0);
+  const [cursor, setCursor] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-function IdolCarousel() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+  // 데이터 받아오기
+  useEffect(() => {
+    const fetchDonations = async () => {
+      try {
+        setIsLoading(true);
+        const data = await getDonations({ cursor, pageSize: itemsPerSlide });
+        if (data && data.list) {
+          setItems((prevItems) => [...prevItems, ...data.list]);
+          setTotalSlides(
+            Math.ceil((items.length + data.list.length) / itemsPerSlide)
+          );
+          setCursor(data.nextCursor);
+        }
+      } catch (error) {
+        console.error('Error fetching donations:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDonations();
+  }, [cursor]);
+
+  const handlePrevSlide = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide((prev) => prev - 1);
+    }
   };
 
+  const handleNextSlide = () => {
+    if (currentSlide < totalSlides - 1) {
+      setCurrentSlide((prev) => prev + 1);
+    } else if (cursor !== null && !isLoading) {
+      setCursor(cursor);
+    }
+  };
+
+  const getCurrentSlideItems = () => {
+    const startIndex = currentSlide * itemsPerSlide;
+    return items.slice(startIndex, startIndex + itemsPerSlide);
+  };
+
+  // 버튼 표시 여부를 결정하는 조건 계산
+  const showPrevButton = currentSlide > 0;
+  const showNextButton =
+    currentSlide < totalSlides - 1 || (cursor !== null && !isLoading);
+
   return (
-    <div>
-      <Slider {...settings}>
-        {data.map((d, index) => (
-          <div key={index}>
-            <div className="idol-carousel-image-container">
-              <img
-                src={d.IdolProfilePicture}
-                alt=""
-                className="idol-carousel-image"
-              />
-              <button className="idol-carousel-donate-button">후원하기</button>
-            </div>
-            <div>
-              <p>{d.DonationTitle}</p>
-              <p>{d.DonationSubtitle}</p>
-            </div>
+    <div className="idolcarousel-container">
+      <div>
+        <p>후원을 기다리는 조공</p>
+      </div>
+      <div className="idolcarousel-content">
+        <div className="idolcarousel-btn-container">
+          {showPrevButton && (
+            <button className="idolcarousel-btn" onClick={handlePrevSlide}>
+              &lt;
+            </button>
+          )}
+        </div>
+        {items.length > 0 ? (
+          <div className="idolcarousel-list">
+            {getCurrentSlideItems().map((item, index) => (
+              <IdolDonationCard key={index} item={item} />
+            ))}
           </div>
-        ))}
-      </Slider>
+        ) : (
+          <p>후원을 기다리는 조공이 없습니다.</p>
+        )}
+        <div className="idolcarousel-btn-container">
+          {showNextButton && (
+            <button className="idolcarousel-btn" onClick={handleNextSlide}>
+              &gt;
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default IdolCarousel;

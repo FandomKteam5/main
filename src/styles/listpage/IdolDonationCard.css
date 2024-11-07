@@ -1,0 +1,236 @@
+.idol-donation-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.idol-donation-card:hover {
+  transform: translateY(-5px);
+}
+
+.idol-donation-card-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.idol-donation-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-donate-button {
+  /* 이름 변경 */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 16px;
+  background-color: #f77063;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-donate-button:hover {
+  background-color: #fe5790;
+}
+
+.idol-donation-card-content {
+  padding: 15px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.donation-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.current-target {
+  font-size: 14px;
+  text-align: left;
+}
+
+.days-left {
+  font-size: 14px;
+  text-align: right;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #f77063;
+  border-radius: 5px;
+}
+
+/* 모달 스타일 개선 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: rgb(112, 112, 112);
+  padding: 24px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.modal-close-button {
+  /* 이름 변경 */
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  object-fit: cover;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.modal-credits {
+  background-color: #f8f8f8;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.donation-input {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 24px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.donation-input:focus {
+  outline: none;
+  border-color: #f77063;
+}
+
+.modal-donate-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #f77063;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  margin-bottom: 12px;
+}
+
+.modal-donate-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.modal-donate-button:hover:not(:disabled) {
+  background-color: #fe5790;
+}
+
+.modal-cancel-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f0f0f0;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.modal-cancel-button:hover {
+  background-color: #e0e0e0;
+}
